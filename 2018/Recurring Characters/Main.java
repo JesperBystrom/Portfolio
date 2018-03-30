@@ -1,29 +1,31 @@
 import java.util.ArrayList;
+import java.util.HashSet;
 
 /*
  * 
- * @Author: Jesper Byström
- * Funktion: Detta program hittar alla karaktärer som kommer tillbaka mer än 1 gång.
+ * @Author: Jesper BystrÃ¶m
+ * Funktion: Detta program hittar alla karaktÃ¤rer som kommer tillbaka mer Ã¤n 1 gÃ¥ng.
  * 
  */
 
 public class Main {
 
 	public static void main(String[] args) {
-		ArrayList<Character> result = findRecurringCharacter("ABCDCEFGHH");
+		double time = System.nanoTime();
+		HashSet<Character> result = findRecurringCharacter("ABCCDEFGHH");
 		result.forEach(r -> System.out.println(r));
+		System.out.println("Finished in: " + ((System.nanoTime()-time)/1000000) + " ms");
 	}
-	public static ArrayList<Character> findRecurringCharacter(String input){
+	
+	public static HashSet<Character> findRecurringCharacter(String input){
 		char[] cInput = input.toCharArray();
-		char[] checks = new char[cInput.length];
-		ArrayList<Character> recurrances = new ArrayList<Character>();
+		HashSet<Character> checks = new HashSet<Character>();
+		HashSet<Character> recurrances = new HashSet<Character>();
+		
 		for(int i=0;i<cInput.length;i++){
-			for(int j=0;j<checks.length;j++){
-				if(checks[j] == cInput[i]){
-					recurrances.add(checks[j]);
-				}
-			}
-			checks[i] = cInput[i];
+			if(checks.contains(cInput[i]))
+				recurrances.add(cInput[i]);
+			checks.add(cInput[i]);
 		}
 		return recurrances;
 	}
