@@ -1,0 +1,112 @@
+.bgcover
+{
+	width: 98.9vw;
+	height: 117vh;
+	background: -webkit-linear-gradient(transparent, white 150%); 
+	position:absolute;
+	top: 0;
+	left: 0;
+}
+
+.description
+{
+	width: 25em;
+	height: 100%;
+	background:rgba(33,33,33,1);
+	position:relative;
+	top: 8em;
+	overflow:hidden;
+	color:white;
+}
+
+.description p
+{
+	padding:2em;
+	margin-top: 6em;
+	line-height: 1.5em;
+	text-shadow: 2px 2px #5F5F5F;
+}
+
+.games
+{
+	width: 25em;
+	height: 100%;
+	background:rgba(33,33,33,1);	
+	margin-top: 10.5em;
+	position:relative;
+}
+
+.writerImage:hover
+{
+	background:url(Bilder/edit_profile.png);
+	background-size:cover;
+}
+
+.description h2
+{
+	padding-top: 1em;
+	padding-left: 7em;
+	text-align:left;
+}
+
+.divHeader
+{
+	width: 100%;
+	height: 3em;
+	position:relative;
+	background:rgba(63,167,253,0.7);
+}
+
+.slideshow
+{
+	width: 60em;
+	height: 43em;
+	background:rgba(33,33,33,1);
+	position:absolute;
+	left:20em;
+	top:8em;	
+	right:0;
+	margin:auto;
+	background-size:cover;
+}
+
+.mySlides
+{
+	width: 100%;
+	height: 93%;
+	background-size:cover;
+	padding: 1em;	
+}
+
+.slideShowButton
+{
+	background:rgba(255,255,255,0.7);
+	width: 25em;
+	height: 2em;
+	margin-top: 1em;
+	position:relative;
+	bottom: 2em;	
+	transition:ease-in 0.2s;
+}
+
+.slideShowButton:hover
+{
+	background:rgba(255,255,255,1);
+}
+
+.add_game
+{
+	width: 100%;
+	height: 3em;
+	background-size:cover;
+	background:rgba(255,255,255,0.7);
+	background-repeat:no-repeat;
+	margin-bottom: 3em;
+	margin-top: 1em;
+	transition:ease-in 0.2s;	
+}
+
+.add_game:hover
+{
+	background:rgba(255,255,255,1);	
+}

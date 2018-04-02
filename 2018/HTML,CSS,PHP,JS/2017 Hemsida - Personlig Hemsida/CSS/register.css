@@ -1,0 +1,163 @@
+body 
+{
+	overflow:hidden;	
+}
+.bg
+{
+	background:url(../Bilder/M.png);
+	width: 100vw;
+	height: 100vh;
+	position:absolute;
+	left: 0;
+	top: 0;
+	opacity: 0.4;
+	overflow:hidden;
+	z-index: -999;
+}
+
+.bgOverlay
+{
+	width: 100vw;
+	height: 100vh;
+	position:absolute;
+	left: 0;
+	top: 0;
+	background:rgba(22,22,22,0.8);/*rgba(63,167,253,0.8);	*/
+	z-index: -999;
+}
+
+.loginBG
+{
+	width: 30%;
+	height: 45%;
+	background:rgba(33,33,33,1);	
+	position:absolute;
+	right:0%;
+	top: 50%;
+	overflow:hidden;
+	z-index: 2;
+}
+
+.registerBG
+{
+	width: 30%;
+	height: 45%;
+	background:rgba(33,33,33,1);	
+	position:absolute;
+	right: 0%;
+	top: 0;
+	overflow:hidden;
+	z-index:2;
+}
+
+.inputBox form
+{
+	margin-left: 2vw;
+	margin-top: -10vh;
+}
+.inputBox form input
+{
+	background:rgba(83,83,83,0.4);
+	border-color:rgba(43,43,43,0.5);
+	width: 20vw;
+	height: 5vh;
+	margin-top: 2vh;	
+	opacity: 0.6;
+	padding-left: 3.5vw;
+	color:white;
+	transition:ease 0.2s;
+}
+
+.inputBox form input:focus
+{
+	opacity: 1;
+	box-shadow: 3px 3px 5px #8C8C8C;
+}	
+
+.inputBox p
+{
+	color:white;
+	font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif	
+}
+
+.submit
+{
+	opacity: 1;	
+	width: 10vw;
+	height: 8vh;
+	position:relative;
+	left: 0vw;
+}
+
+.mojogames
+{
+	width: 40vw;
+	height: 12vh;
+	background-size:cover;
+	background:url(../Bilder/mojogames.png);
+	background-repeat:no-repeat;
+	z-index:999;
+	position:relative;
+}
+
+.bild
+{
+	width: 40vw;
+	height: 60vh;
+	background:rgba(33,33,33,1);
+	position:absolute;
+	top:0;
+	left:0;
+	margin-top: 30vh;
+	margin-left: 3.5vw;
+}
+
+.password
+{
+	background:url(../Bilder/password.png);
+	background-repeat:no-repeat;
+	background-position:1vw 4vh;
+	width: 5vw;
+}
+.username
+{
+	background:url(../Bilder/username_2.png);
+	background-repeat:no-repeat;
+	background-position:1vw 4vh;
+	width: 5vw;
+}
+
+			
+.mail
+{
+	background:url(../Bilder/mail.png);
+	background-repeat:no-repeat;
+	background-position:0.8vw 4vh;
+	width: 5vw;
+}
+
+#inputText
+{
+	
+}
+
+.divHeader
+{
+	width: 100%;
+	height: 10vh;
+	position:relative;
+	top: -10vh;
+	border-top-left-radius: 15px;
+	border-top-right-radius: 15px;
+	background:rgba(63,167,253,0.7);
+	z-index: 99999;
+}
+
+@keyframes slideInFromRight {
+  0% {
+	margin-left: 70em;
+  }
+  100% {
+	margin-left: 58em;
+  }
+}

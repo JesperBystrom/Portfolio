@@ -1,0 +1,201 @@
+*
+{
+	margin: 0;
+	padding: 0;	
+	box-sizing:border-box;
+}
+
+body, html 
+{ 
+	overflow-x: hidden; 
+	overflow-y: hidden;
+}
+
+.bgcover
+{
+	width: 100em;
+	height: 49.6em;
+	background:rgba(22,22,22,0.8);
+	position:absolute;
+	top: 0;
+	left: 0;
+	overflow:hidden;
+	z-index: -998;
+}
+
+.bg
+{
+	width: 100em;
+	height: 49.6em;
+	background:url(../Bilder/M.png);
+	opacity: 0.4;
+	position:absolute;
+	top: 0;
+	left: 0;
+	overflow:hidden;
+	z-index: -999;
+}
+
+.middle
+{
+	width: 30em;
+	height: 38em;
+	background:rgba(33,33,33,1);
+	margin-top: 10.5em;
+	margin-left: 35em;
+	position:absolute;
+}
+.divHeader
+{
+	width: 100%;
+	height: 3em;
+	position:relative;
+	background:rgba(63,167,253,0.7);
+}
+.inputBox form input
+{
+	background:rgba(83,83,83,0.4);
+	background-size:2em 2em;
+	background-position:5% 50%;
+	border-color:rgba(43,43,43,0.5);
+	width: 20vw;
+	height: 3.5em;
+	opacity: 0.6;
+	color:white;
+	transition:ease 0.2s;
+	position:relative;
+	margin-right: 0em;
+	margin-left: 2em;
+	margin-top: 1em;
+	padding-left: 3.5vw;
+	/*display:block;*/
+}
+
+.inputBox form textarea
+{
+	background:rgba(83,83,83,0.4);
+	border-color:rgba(43,43,43,0.5);
+	width: 20vw;
+	height: 3.5em;	
+	opacity: 0.6;
+	padding-left: 3.5vw;
+	color:white;
+	transition:ease 0.2s;
+	margin-left: 7.5em;
+	margin-top: 2vh;
+}
+
+.inputBox form input:focus
+{
+	opacity: 1;
+	box-shadow: 3px 3px 5px #8C8C8C;
+}	
+
+.inputBox p
+{
+	color:white;
+	font-family:Cambria, "Hoefler Text", "Liberation Serif", Times, "Times New Roman", serif	
+}
+
+.inputBox #description
+{
+	height: 10em;
+	padding: 0;	
+}
+
+@keyframes slideInFromRight {
+  0% {
+	left: 50%;
+  }
+  100% {
+	left: 25%;
+  }
+}
+
+.file_exists
+{
+	width: 10em;
+	height: 5em;
+	background:red;
+	position:absolute;
+	left: 25%;
+	top: 50%;
+	animation: 0.5s cubic-bezier(0.130, 0.130, 0.015, 0.995) 0s 1 slideInFromRight;
+	-webkit-animation-fill-mode: forwards;
+}
+.question_mark
+{
+	width:2em;
+	height:2em;
+	background:url(../Bilder/question_mark.png);
+	background-size:cover;	
+	margin:0;
+	padding:0;
+	margin-top: 0em;
+	margin-left: 2.5em;
+	float:left;
+}
+
+#fileToUpload
+{
+	background:rgba(83,83,83,0.4) url(../Bilder/username_2.png);
+	background-repeat:no-repeat;
+	background-position: 0 1em;	
+}
+
+#username
+{
+	background:rgba(83,83,83,0.4) url(../Bilder/username_2.png);
+	background-repeat:no-repeat;
+	background-position: 0 1em;
+}
+
+#password
+{
+	background:rgba(83,83,83,0.4) url(../Bilder/username_2.png);
+	background-repeat:no-repeat;
+	background-position: 0 1em;
+}
+
+#biosTitle
+{
+	background:rgba(83,83,83,0.4) url(../Bilder/username_2.png);
+	background-repeat:no-repeat;
+	background-position: 0 1em;
+}
+
+.infoBox
+{
+	width: 10em;
+	height: 12em;
+	background:rgba(33,33,33,1);
+	position:absolute;
+	left: -0em;
+	top: 4em;
+	z-index: -1;
+}
+.infoBox p
+{
+	padding: 0.5em;
+	color:gray;
+	z-index: -1;
+}
+
+.question_mark:hover .infoBox
+{
+	left: -10em;
+}
+
+#submit
+{
+	margin-left: 7.6em;
+	text-align:center;	
+}
+
+.divHeader p
+{
+	color:lightgray;
+	padding: 1em;	
+}
+
+
