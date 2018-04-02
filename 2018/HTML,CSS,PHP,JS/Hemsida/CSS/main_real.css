@@ -1,0 +1,510 @@
+@charset "utf-8";
+/* CSS Document */
+
+*
+{
+	padding: 0;
+	margin: 0;
+		
+}
+
+body 
+{	
+	background-color:#141412;	
+	overflow-x:hidden;
+}
+
+ header 
+{
+	width: 100%;
+	padding: 2em;
+}
+
+header nav .logo
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/logo.png);
+	width: 4em;
+	height: 3em;
+	background-size:cover;
+	position:absolute;
+	top: 2.7em;
+}
+
+ header nav #pc_search
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/search.png);
+	width: 2em;
+	height: 2em;
+	background-size:cover;
+	margin-left: 3em;
+	margin-top: 1.2em;
+}
+ header nav #pc_searchHidden
+{
+	display:none;
+	background:#e08222;
+	width: 1500%;
+	height: 3em;
+	position:relative;
+	right: 27em;
+	top: 3em;
+	border-radius:0.5em;
+}
+ header nav #pc_search #pc_searchHidden p
+{
+	text-align:center;
+	height:100%;
+	width:100%;
+	line-height: 1.7em;
+	color:white;
+	font-family:main;
+}
+ header nav #pc_searchHidden .arrowUp
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/arrow.png);
+	width: 15%;
+	height: 20%;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	position:relative;
+	left: 85%;
+	bottom: 20%;
+}
+
+ header nav #pc_search:hover
+{
+	/*
+		Byt ut till en SVG och gö fill:
+	*/
+}
+
+ header nav ul li 
+{
+	color:white;
+}
+
+ header nav ul 
+{	
+	list-style-type:none;
+	display:flex;
+	justify-content:flex-end;
+	padding-right: 5em;
+}
+
+ header nav ul li
+{
+	width: 10em;
+	height: 100%;
+	line-height: 5em;
+	text-align:center;
+}
+
+ header nav ul li a
+{
+	color:white;
+	text-decoration:none;
+	font-family:main;
+}
+
+ #gadgetLagretWrapper
+{
+	padding: 8em 0em 0em 6em;
+	width: 100vw;
+	height: 25em;
+}
+ #gadgetLagretWrapper .flexWrapper p
+{
+	width: 50%;
+	font-size: 1.5em;
+	color:white;
+	font-family:main;
+}
+
+ #gadgetLagretWrapper h1
+{
+	width: 50%;
+	font-size: 4em;
+	color:white;
+	font-family:main;
+}
+
+ #gadgetLagretWrapper .flexWrapper #ipad
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/ipad.png);
+	width: 25%;
+	height: 35em;
+	position:absolute;
+	right:0;
+	top:10em;
+	background-size:cover;
+}
+
+#hittaOssWrapper
+{
+	background:#e08222;
+	padding: 2em;
+	margin-top: 6em;
+	height: 25em;	
+	margin-bottom: 10em;
+}
+#hittaOssWrapper h1
+{
+	font-family:main;
+	color:white;
+	width: 50%;
+	overflow:hidden;
+	font-size: 3em;	
+}
+#hittaOssWrapper .hittaOss
+{
+	position:relative;
+}
+#hittaOssWrapper .hittaOss p
+{
+	font-family:main;
+	color:white;
+	width: 50%;
+	height: 20em;
+	overflow:hidden;
+	margin-top: 4em;
+}
+#hittaOssWrapper .hittaOss .country
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/country.png);
+	width: 20em;
+	height: 40em;
+	position:absolute;
+	top:0;
+	bottom:0;
+	margin:auto;
+	right:2em;
+	background-size:cover;
+}
+
+
+#föremålsParent
+{
+	margin-top: 5em;
+	margin-bottom: 10em;
+}
+
+#föremålsParent .föremålWrapper
+{	
+}
+
+#föremålsParent .föremålWrapper .wrapper
+{
+	display:flex;
+	margin:auto;
+}
+
+#föremålsParent .föremålWrapper h2
+{
+	color:white;
+	font-family:main;
+	text-align:center;	
+	width: 100%;
+	position:relative;
+	font-size: 3em;
+	margin-bottom: 0.5em;
+}
+
+
+#föremålsParent .föremålWrapper h2::after
+{
+	content:"";
+	width: 10em;
+	height: 0.03em;
+	background:white;
+	position:absolute;
+	left:0;
+	right:0;
+	bottom: -0.2em;
+	margin:auto;
+	background:lightgray;
+	border-radius: 0.1em;
+}
+
+#föremålsParent .föremålWrapper .wrapper .föremålBox
+{
+	width:23.2%;
+	height: 15em;
+	margin-left: 1em;
+	border-style: solid;
+	border-width: 0.2em;
+	border-color: gray;
+	margin-top: 2em;
+}
+
+#föremålsParent .föremålWrapper .wrapper .föremålBox:hover
+{
+	border-color:lightgray;	
+}
+
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/ssd.png);
+	background-size:contain;
+	background-repeat:no-repeat;
+	width: 100%;
+	height: 50%;
+	background-position:50% 50%;	
+}
+#föremålsParent .föremålWrapper .wrapper h3
+{
+	text-align:center;
+	color:white;	
+}
+#föremålsParent .föremålWrapper .wrapper p
+{
+	text-align:center;
+	color:white;	
+}
+
+
+footer
+{
+	background:#e08222;
+	width: 100%;
+	height: 10em;	
+	padding-top: 1em;
+	margin-top: 10em;
+}
+
+footer .logo
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/logo.png);
+	width: 4em;
+	height: 3em;
+	background-size:cover;
+	margin-left: 3em;	
+}
+
+footer .flexWrapper
+{
+	display:flex;
+	justify-content:space-between;
+	padding-right: 4em;
+	padding-left: 4em;
+}
+
+footer .flexWrapper #textWrapper
+{
+	padding-top: 1.5em;
+}
+footer .flexWrapper #textWrapper p
+{
+	color:white;
+	font-family:main;	
+}
+
+footer .flexWrapper #socialMediaWrapper
+{
+	height: 5em;		
+}
+
+footer .flexWrapper #socialMediaWrapper .socialMedia_1
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/twitter.png);
+	width: 4em;
+	height: 4em;	
+	display:inline-block;
+	margin-left: 1em;
+	background-size:cover;
+}
+footer .flexWrapper #socialMediaWrapper .socialMedia_2
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/facebook.png);
+	width: 4em;
+	height: 4em;	
+	display:inline-block;
+	margin-left: 1em;
+	background-size:cover;
+}
+
+.header_phone
+{
+	display:none;	
+}
+
+.header_phone nav .logo
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/logo.png);
+	width: 4em;
+	height: 3em;
+	background-size:cover;
+	position:absolute;
+	top: 2.7em;
+	left: 2em;
+}
+
+.header_phone nav #mobile_search
+{
+	background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/Hamburger.png);
+	width: 4em;
+	height: 4em;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-left: 3em;
+	margin-top: 1em;
+	color:white;
+	z-index: 2;
+	position:fixed;
+	right: 5%;
+}
+
+.header_phone nav
+{	
+	padding-right: 5em;
+}
+
+.header_phone nav #mobile_searchHidden
+{
+	width: 100vw;
+	height: 100vh;
+	background:#141412;	
+	z-index: 1;
+	position:fixed;
+	top: 0;
+	left: 0;
+	display:none;
+}
+
+
+.header_phone nav #mobile_searchHidden ul
+{
+	margin-top: 10%;
+}
+.header_phone nav #mobile_searchHidden ul li
+{
+	width: 100%;
+	background:#e08222;
+	font-family:main;
+	text-align:center;
+	line-height: 10em;
+	
+}
+.header_phone nav #mobile_searchHidden ul li:hover
+{
+	background:white;
+	
+}
+.header_phone nav #mobile_searchHidden ul li a
+{
+	list-style-type:none;
+	color:white;	
+}
+
+@media screen and (max-width: 880px) {
+	header 
+	{
+        display:none;
+    }
+	.header_phone
+	{
+		display:block;
+	}
+	#gadgetLagretWrapper
+	{
+		width: 100vw;
+		height: 25em;
+		margin:auto;
+		padding-right: 0em;
+		padding-left: 0em;
+	}
+	 #gadgetLagretWrapper .flexWrapper p
+	{
+		width: 90%;
+		font-size: 1.5em;
+		color:white;
+		font-family:main;
+		text-align:center;
+		margin:auto;
+	}
+	#gadgetLagretWrapper h1
+	{
+		width:100%;
+		font-size: 3em;
+		color:white;
+		font-family:main;
+		text-align:center;
+	}
+	 #gadgetLagretWrapper .flexWrapper #ipad
+	{
+		background:url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Bilder/Bilder/ipad.png);
+		width: 100%;
+		background-position:center;
+		height: 16em;
+		position:absolute;
+		right:0;
+		left:0;
+		margin:auto;
+		top:22em;
+		background-size:contain;
+		background-repeat:no-repeat;
+	}
+	
+	#hittaOssWrapper
+	{
+		background:#e08222;
+		padding: 2em;
+		margin-top: 3em;
+		height: 25em;	
+	}
+	#hittaOssWrapper h1
+	{
+		font-family:main;
+		color:white;
+		width: 100%;
+		overflow:hidden;
+		font-size: 3em;	
+		text-align:center;
+		margin-top: 0.5em;
+	}
+	#hittaOssWrapper .hittaOss
+	{
+		position:relative;
+	}
+	#hittaOssWrapper .hittaOss p
+	{
+		font-family:main;
+		color:white;
+		width: 100%;
+		height: 20em;
+		overflow:hidden;
+		margin-top: 1em;
+		text-align:center;
+		overflow:hidden;
+	}
+	#hittaOssWrapper .hittaOss .country
+	{
+		display:none;
+	}
+	#föremålsParent .föremålWrapper .wrapper
+	{
+		display:flex;
+		margin:auto;
+		flex-direction:column;
+		align-items:center;
+	}
+	#föremålsParent .föremålWrapper .wrapper .föremålBox
+	{
+		width:100%;
+		height: 15em;
+		border:none;
+	}
+	#föremålsParent .föremålWrapper .wrapper p
+	{
+		text-align:center;
+		color:white;
+		width: 90%;	
+		margin:auto;
+	}
+	
+}
+@font-face {
+    font-family: 'main';
+    src: url(file:///C|/Users/elev/Google%20Drive/trean/%C3%84mnen/WU2%20TE15%20Jesper%20Bystr%C3%B6m/Projekt/Hemsida/Fonts/Berlin%20Sans%20FB%20Regular.ttf);
+}

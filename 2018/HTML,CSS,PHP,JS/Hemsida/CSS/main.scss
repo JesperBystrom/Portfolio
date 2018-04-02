@@ -1,0 +1,756 @@
+@charset "utf-8";
+/* CSS Document */
+
+$color-background: /*#141412*/ #010101;
+$color-background-text: none;
+$c_black: #000;
+$c_boxes: #914803;
+$c_text: #fff;
+$c_orange: #FF9E00;
+$c_white: $c_text;
+
+*
+{
+	padding: 0;
+	margin: 0;
+	/*background:black !important;
+	box-shadow:0px 0px 0px 1px green !important;
+	color:green !important;*/
+}
+
+body 
+{	
+	background-color:$color-background;	
+	background:$c_black;
+}
+
+ header 
+{
+	width: 100%;
+}
+
+header nav 
+{
+	width: 100%;
+	padding-top: 2em;
+	padding-bottom: 2em;
+}
+
+header nav .logo
+{
+	background:url(../Bilder/logo.png);
+	width: 4em;
+	height: 3em;
+	background-size:cover;
+	position:absolute;
+	top: 2.7em;
+	left: 2em;
+}
+
+ header nav #pc_search
+{
+	background:url(../Bilder/search.png);
+	width: 2em;
+	height: 2em;
+	background-size:cover;
+	margin-left: 3em;
+	margin-top: 1.2em;
+}
+ header nav #pc_searchHidden
+{
+	display:none;
+	background:$c_boxes;
+	width: 1500%;
+	height: 3em;
+	position:relative;
+	right: 27em;
+	top: 3em;
+	border-radius:0.5em;
+}
+ header nav #pc_search #pc_searchHidden p
+{
+	text-align:center;
+	height:100%;
+	width:100%;
+	line-height: 1.7em;
+	color:$c_text;
+	font-family:main;
+	background:color-background-text;
+}
+ header nav #pc_searchHidden .arrowUp
+{
+	background:url(../Bilder/arrow.png);
+	width: 15%;
+	height: 20%;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	position:relative;
+	left: 85%;
+	bottom: 20%;
+}
+
+ header nav #pc_search:hover
+{
+	/*
+		Byt ut till en SVG och gö fill:
+	*/
+}
+
+ header nav ul li 
+{
+	color:$c_text;
+}
+
+ header nav ul 
+{	
+	list-style-type:none;
+	display:flex;
+	justify-content:flex-end;
+	padding-right: 5em;
+}
+
+ header nav ul li
+{
+	width: 10em;
+	height: 100%;
+	line-height: 5em;
+	text-align:center;
+}
+
+ header nav ul a li p
+{
+	color:$c_text;
+	text-decoration:none;
+	font-family:main;
+}
+
+ #gadgetLagretWrapper
+{
+	padding: 8em 0em 0em 6em;
+	height: 25em;
+}
+ #gadgetLagretWrapper .flexWrapper{
+	width: 50%;	 
+ }
+ #gadgetLagretWrapper .flexWrapper p
+{
+	width: 100%;
+	font-size: 1.5em;
+	color:$c_text;
+	font-family:main;
+	background:color-background-text;
+}
+
+ #gadgetLagretWrapper h1
+{
+	width: 50%;
+	font-size: 4em;
+	color:$c_text;
+	font-family:main;
+	background:color-background-text;
+}
+
+ #gadgetLagretWrapper .flexWrapper #ipad
+{
+	background:url(../Bilder/ipad.png);
+	width: 25%;
+	height: 35em;
+	position:absolute;
+	right:0;
+	top:10em;
+	background-size:cover;
+}
+
+#hittaOssWrapper
+{
+	background:$c_boxes;
+	padding: 2em;
+	margin-top: 6em;
+	height: 25em;	
+	margin-bottom: 10em;
+}
+#hittaOssWrapper h1
+{
+	font-family:main;
+	color:$c_text;
+	width: 50%;
+	overflow:hidden;
+	font-size: 3em;	
+	background:color-background-text;
+}
+#hittaOssWrapper .hittaOss
+{
+	position:relative;
+}
+#hittaOssWrapper .hittaOss p
+{
+	font-family:main;
+	color:$c_text;
+	width: 70%;
+	height: 20em;
+	overflow:hidden;
+	margin-top: 4em;
+	background:color-background-text;
+}
+#hittaOssWrapper .hittaOss svg
+{
+	/*background:url(../Bilder/country.png);*/
+	width: 20em;
+	height: 40em;
+	position:absolute;
+	top:0;
+	bottom:0;
+	margin:auto;
+	right:2em;
+	background-size:cover;
+	fill:$c_white;
+}
+
+
+#föremålsParent
+{
+	margin-top: 5em;
+	margin-bottom: 12em;
+}
+
+#föremålsParent .föremålWrapper
+{	
+	width: 100%;
+}
+
+#föremålsParent .föremålWrapper .wrapper
+{
+	display:flex;
+	margin:auto;
+}
+
+#föremålsParent .föremålWrapper h2
+{
+	color:$c_text;
+	font-family:main;
+	text-align:center;	
+	width: 100%;
+	position:relative;
+	font-size: 2.3em;
+	margin-bottom: 0.5em;
+	background:color-background-text;
+}
+
+
+#föremålsParent .föremålWrapper h2::after
+{
+	content:"";
+	width: 10%;
+	height: 0.03em;
+	background:white;
+	position:absolute;
+	left:0;
+	right:0;
+	bottom: -0.2em;
+	margin:auto;
+	background:lightgray;
+	border-radius: 0.1em;
+}
+
+#föremålsParent .föremålWrapper .wrapper .föremålBox
+{
+	width:23.2%;
+	height: 15em;
+	margin-left: 1.2em;
+	margin-top: 2em;
+}
+
+#föremålsParent .föremålWrapper .wrapper .föremålBox:hover
+{
+	border-color:lightgray;	
+}
+
+
+@mixin getProduct($img) {
+	background:url("../Bilder/"+$img);
+	background-size:contain;
+	background-repeat:no-repeat;
+	width: 100%;
+	height: 50%;
+	background-position:50% 50%;	
+}
+
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image1
+{
+	@include getProduct("ssd.png");
+}
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image2
+{
+	@include getProduct("ssd.png");
+}
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image3
+{
+	@include getProduct("ssd.png");
+}
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image4
+{
+	@include getProduct("ssd.png");
+}
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image5
+{
+	@include getProduct("ssd.png");
+}
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image6
+{
+	@include getProduct("ssd.png");
+}
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image7
+{
+	@include getProduct("ssd.png");
+}
+#föremålsParent .föremålWrapper .wrapper .föremålBox .image8
+{
+	@include getProduct("ssd.png");
+}
+#föremålsParent .föremålWrapper .wrapper h3
+{
+	text-align:center;
+	color:$c_text;	
+}
+#föremålsParent .föremålWrapper .wrapper p
+{
+	text-align:center;
+	color:$c_text;	
+	background:color-background-text;
+}
+
+.header_phone
+{
+	display:none;
+}
+
+.header_phone nav .logo
+{
+	background:url(../Bilder/logo.png);
+	width: 4em;
+	height: 3em;
+	background-size:cover;
+	position:absolute;
+	top: 2.7em;
+	left: 2em;
+}
+
+.header_phone nav #mobile_search
+{
+	background:url(../Bilder/Hamburger.png);
+	width: 4em;
+	height: 4em;
+	background-size:contain;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-left: 3em;
+	margin-top: 1em;
+	color:$c_text;
+	z-index: 2;
+	position:fixed;
+	right: 5%;
+	background:color-background-text;
+}
+
+.header_phone nav
+{	
+	padding-right: 5em;
+}
+
+.header_phone nav #mobile_searchHidden
+{
+	width: 100vw;
+	height: 100vh;
+	background:$c_boxes;
+	z-index: 1;
+	position:fixed;
+	top: 0;
+	left: 0;
+	display:none;
+	transition: ease 0.2s;	
+}
+
+
+.header_phone nav #mobile_searchHidden ul
+{
+	margin-top: 10%;
+}
+.header_phone nav #mobile_searchHidden ul li
+{
+	width: 100%;
+	background: darken($c_boxes, 10%);
+	font-family:main;
+	text-align:center;
+	line-height: 10em;
+	
+}
+.header_phone nav #mobile_searchHidden ul li:hover
+{
+	background:white;
+	
+}
+.header_phone nav #mobile_searchHidden ul a
+{
+	list-style-type:none;
+	color:$c_text;	
+}
+
+#loginScreen {
+	display:none;
+	background:white;	
+	width: 40vw;
+	height: 75%;
+	position:fixed;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	margin:auto;
+	border-radius: 1em;
+	padding: 2.5em;
+	box-sizing:border-box;
+	z-index: 999;
+}
+
+#loginScreen form input {
+	width: 100%;
+	height: 3em;
+	margin-top: 8%;
+	border:none;
+	border-bottom: 0.2em solid lightgray;
+	background:none;
+	padding-left: 3em;
+	background:url("../Bilder/user.png");
+	background-repeat:no-repeat;
+	background-size:2em;
+	background-position: left 0.8em;
+}
+
+#loginScreen form .icoUser
+{
+	width: 5%;
+	height: 5%;
+	background:url("../Bilder/user.png");
+	position:absolute;
+	top:23%;
+	left:6%;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+#loginScreen form .icoPass
+{
+	width: 5%;
+	height: 5%;
+	background:url("../Bilder/user.png");
+	position:absolute;
+	top:38%;
+	left:6%;
+	background-repeat:no-repeat;
+	background-size:cover;
+}
+
+#loginScreen p
+{
+	color:$c_boxes;
+	width: 100%;
+	font-family:main;
+	font-size: 32px;
+	text-align:center;
+}
+
+#loginScreen form p
+{
+	color:$c_boxes;
+	width: 100%;
+	font-family:main;
+	font-size: 18px;
+	text-align:left;
+	margin-top: 3em;
+	margin-bottom: 1em;
+}
+
+#loginScreen button
+{
+	background:$c_boxes;
+	width: 100%;
+	height: 3.2em;
+	font-size: 18px;
+	color:$c_text;
+	border:none;
+	font-family:main;
+	margin-top: 4em;
+}
+#loginScreen button:last-child
+{
+	margin-top: 0em
+}
+
+footer
+{
+	background:$c_boxes;
+	width: 100%;
+	height: 10em;	
+	padding-top: 1em;
+	margin-top: 10em;
+	overflow:hidden;
+}
+
+footer .logo
+{
+	background:url(../Bilder/logo.png);
+	width: 4em;
+	height: 3em;
+	background-size:cover;
+	margin-left: 3em;	
+	display:block;
+}
+
+footer .flexWrapper
+{
+	display:flex;
+	justify-content:space-between;
+	padding-right: 2em;
+	padding-left: 2em;
+	height: 70%;
+}
+
+footer .flexWrapper #textWrapper
+{
+	padding-top: 1.5em;
+}
+footer .flexWrapper #textWrapper p
+{
+	color:$c_text;
+	font-family:main;	
+}
+
+@mixin socialMedia($img) {
+	background:url("../Bilder/"+$img);
+	width: 4em;
+	height: 4em;	
+	display:inline-block;
+	background-size:cover;
+	background-repeat:no-repeat;
+	background-position:center;
+	margin-left: 1em;
+}
+
+footer .flexWrapper #socialMediaWrapper
+{	
+	display:flex;
+	justify-content:flex-end;
+	margin-left: 2em;
+}
+
+footer .flexWrapper #socialMediaWrapper .socialMedia_1
+{
+	@include socialMedia("twitter.png");
+}
+footer .flexWrapper #socialMediaWrapper .socialMedia_2
+{
+	@include socialMedia("facebook.png");
+}
+footer .flexWrapper #socialMediaWrapper .socialMedia_3
+{
+	@include socialMedia("facebook.png");
+}
+footer .flexWrapper #socialMediaWrapper .socialMedia_4
+{
+	@include socialMedia("facebook.png");
+}
+footer .flexWrapper #socialMediaWrapper .socialMedia_5
+{
+	@include socialMedia("facebook.png");
+}
+
+footer .flexWrapper #socialMediaWrapper .socialMedia_6
+{
+	@include socialMedia("facebook.png");
+}
+
+footer .flexWrapper #socialMediaWrapper .socialMedia_7
+{
+	@include socialMedia("facebook.png");
+}
+
+@media screen and (min-width: 950px){
+	body 
+	{
+		overflow-y:visible;
+	}
+}
+
+@media screen and (max-width: 950px) {
+	#loginScreen {
+		width: 90vw;
+	}
+	#loginScreen button
+	{
+		margin-top: 2em;
+	}
+}
+@media screen and (max-width: 880px) {
+	header 
+	{
+        display:none;
+    }
+	.header_phone
+	{
+		display:block;
+	}
+	#gadgetLagretWrapper
+	{
+		width: 100vw;
+		height: 25em;
+		margin:auto;
+		padding-right: 0em;
+		padding-left: 0em;
+	}
+	#gadgetLagretWrapper .flexWrapper
+	{
+		width: 100%;	
+	}
+	 #gadgetLagretWrapper .flexWrapper p
+	{
+		width: 100%;
+		font-size: 1.3em;
+		color:$c_text;
+		font-family:main;
+		text-align:center;
+		margin:auto;
+	}
+	#gadgetLagretWrapper h1
+	{
+		width:100%;
+		font-size: 3em;
+		color:$c_text;
+		font-family:main;
+		text-align:center;
+		background:color-background-text;
+	}
+	#gadgetLagretWrapper .flexWrapper #ipad
+	{
+		background:url(../Bilder/ipad.png);
+		width: 100%;
+		background-position:center;
+		height: 16em;
+		position:absolute;
+		right:0;
+		left:0;
+		margin:auto;
+		top:22em;
+		background-size:contain;
+		background-repeat:no-repeat;
+	}
+	
+	#hittaOssWrapper
+	{
+		background:$c_boxes;
+		padding: 2em;
+		margin-top: 3em;
+		height: 25em;	
+	}
+	#hittaOssWrapper h1
+	{
+		font-family:main;
+		color:$c_text;
+		width: 100%;
+		overflow:hidden;
+		font-size: 3em;	
+		text-align:center;
+		margin-top: 0.5em;
+	}
+	#hittaOssWrapper .hittaOss
+	{
+		position:relative;
+	}
+	#hittaOssWrapper .hittaOss p
+	{
+		font-family:main;
+		color:$c_text;
+		width: 100%;
+		height: 20em;
+		overflow:hidden;
+		margin-top: 1em;
+		text-align:center;
+		overflow:hidden;
+	}
+	#hittaOssWrapper .hittaOss svg
+	{
+		display:none;
+	}
+	#föremålsParent .föremålWrapper .wrapper
+	{
+		display:flex;
+		margin:auto;
+		flex-direction:column;
+		align-items:center;
+	}
+	#föremålsParent .föremålWrapper .wrapper .föremålBox
+	{
+		width:100%;
+		height: 15em;
+		border:none;
+	}
+	#föremålsParent .föremålWrapper .wrapper p
+	{
+		text-align:center;
+		color:$c_text;
+		width: 90%;	
+	}
+	@mixin socialMedia($img) {
+		background:url("../Bilder/"+$img);
+		width: 2em;	
+		display:inline-block;
+		background-size:contain;
+		background-repeat:no-repeat;
+		background-position:center;
+		margin-left: 1em;
+	}
+	footer .flexWrapper #socialMediaWrapper .socialMedia_1
+	{
+		@include socialMedia("twitter.png");
+	}
+	footer .flexWrapper #socialMediaWrapper .socialMedia_2
+	{
+		@include socialMedia("facebook.png");
+	}
+	footer .flexWrapper #socialMediaWrapper .socialMedia_3
+	{
+		@include socialMedia("facebook.png");
+	}
+	footer .flexWrapper #socialMediaWrapper .socialMedia_4
+	{
+		@include socialMedia("facebook.png");
+	}
+	footer .flexWrapper #socialMediaWrapper .socialMedia_5
+	{
+		@include socialMedia("facebook.png");
+	}
+	
+	footer .flexWrapper #socialMediaWrapper .socialMedia_6
+	{
+		@include socialMedia("facebook.png");
+	}
+	
+	footer .flexWrapper #socialMediaWrapper .socialMedia_7
+	{
+		@include socialMedia("facebook.png");
+	}
+}
+
+@media screen and (max-width: 680px) {
+	footer .logo
+	{
+		display:none;	
+	}
+}
+@font-face {
+    font-family: 'main';
+    src: url(../Fonts/Berlin%20Sans%20FB%20Regular.ttf);
+}
+@font-face {
+    font-family: 'main_bold';
+    src: url(../Fonts/Berlin_Sans_FB_Demi_Bold.ttf);
+}
