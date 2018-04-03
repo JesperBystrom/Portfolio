@@ -1,0 +1,764 @@
+fileFormatVersion: 2
+guid: 7f7f3bae98d6cf34a9ce49a85190d27c
+timeCreated: 1501019556
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm/Shoulder.L
+    100002: Arm/Shoulder.L_end
+    100004: Armature
+    100006: BezierCircle.006
+    100008: BezierCircle.007
+    100010: BezierCircle.008
+    100012: Body
+    100014: Body_end
+    100016: Bone
+    100018: Bone_end
+    100020: Camera
+    100022: Cylinder
+    100024: Cylinder.000
+    100026: Cylinder.002
+    100028: Cylinder.003
+    100030: Cylinder.004
+    100032: Cylinder.005
+    100034: foot.L
+    100036: foot.L_end
+    100038: foot.R
+    100040: foot.R_end
+    100042: Head
+    100044: Head_end
+    100046: //RootNode
+    100048: Lamp
+    100050: Leg.L
+    100052: Leg.R
+    100054: Sphere
+    100056: Sphere.001
+    100058: Sphere.002
+    100060: Sphere.004
+    100062: Sphere.005
+    100064: Sphere.006
+    100066: Sphere.008
+    400000: Arm/Shoulder.L
+    400002: Arm/Shoulder.L_end
+    400004: Armature
+    400006: BezierCircle.006
+    400008: BezierCircle.007
+    400010: BezierCircle.008
+    400012: Body
+    400014: Body_end
+    400016: Bone
+    400018: Bone_end
+    400020: Camera
+    400022: Cylinder
+    400024: Cylinder.000
+    400026: Cylinder.002
+    400028: Cylinder.003
+    400030: Cylinder.004
+    400032: Cylinder.005
+    400034: foot.L
+    400036: foot.L_end
+    400038: foot.R
+    400040: foot.R_end
+    400042: Head
+    400044: Head_end
+    400046: //RootNode
+    400048: Lamp
+    400050: Leg.L
+    400052: Leg.R
+    400054: Sphere
+    400056: Sphere.001
+    400058: Sphere.002
+    400060: Sphere.004
+    400062: Sphere.005
+    400064: Sphere.006
+    400066: Sphere.008
+    2300000: BezierCircle.006
+    2300002: BezierCircle.007
+    2300004: BezierCircle.008
+    2300006: Sphere.004
+    3300000: BezierCircle.006
+    3300002: BezierCircle.007
+    3300004: BezierCircle.008
+    3300006: Sphere.004
+    4300000: Cylinder
+    4300002: Cylinder.003
+    4300004: Sphere.006
+    4300006: Cylinder.002
+    4300008: Sphere.005
+    4300010: Sphere.001
+    4300012: Cylinder.000
+    4300014: Sphere
+    4300016: Sphere.008
+    4300018: Cylinder.004
+    4300020: Sphere.002
+    4300022: Cylinder.005
+    4300024: Sphere.004
+    4300026: BezierCircle.006
+    4300028: BezierCircle.007
+    4300030: BezierCircle.008
+    7400000: Armature|Idle_1
+    7400002: Armature|Idle_2
+    7400004: Armature|Idle_2.001
+    7400006: Armature|Idle_3
+    7400008: Armature|Walk_1
+    7400010: Armature|Walk_2
+    9500000: //RootNode
+    13700000: Cylinder
+    13700002: Cylinder.000
+    13700004: Cylinder.002
+    13700006: Cylinder.003
+    13700008: Cylinder.004
+    13700010: Cylinder.005
+    13700012: Sphere
+    13700014: Sphere.001
+    13700016: Sphere.002
+    13700018: Sphere.005
+    13700020: Sphere.006
+    13700022: Sphere.008
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Armature|Idle_1
+      takeName: Armature|Idle_1
+      firstFrame: 0
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm/Shoulder.L
+        weight: 1
+      - path: Armature/Arm/Shoulder.L/Arm/Shoulder.L_end
+        weight: 1
+      - path: Armature/Body
+        weight: 1
+      - path: Armature/Body/Body_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Head/Head_end
+        weight: 1
+      - path: Armature/Leg.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L/foot.L_end
+        weight: 1
+      - path: Armature/Leg.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R/foot.R_end
+        weight: 1
+      - path: BezierCircle.006
+        weight: 1
+      - path: BezierCircle.007
+        weight: 1
+      - path: BezierCircle.008
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder.000
+        weight: 1
+      - path: Cylinder.002
+        weight: 1
+      - path: Cylinder.003
+        weight: 1
+      - path: Cylinder.004
+        weight: 1
+      - path: Cylinder.005
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sphere.002
+        weight: 1
+      - path: Sphere.004
+        weight: 1
+      - path: Sphere.005
+        weight: 1
+      - path: Sphere.006
+        weight: 1
+      - path: Sphere.008
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle_2
+      takeName: Armature|Idle_2
+      firstFrame: 0
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm/Shoulder.L
+        weight: 1
+      - path: Armature/Arm/Shoulder.L/Arm/Shoulder.L_end
+        weight: 1
+      - path: Armature/Body
+        weight: 1
+      - path: Armature/Body/Body_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Head/Head_end
+        weight: 1
+      - path: Armature/Leg.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L/foot.L_end
+        weight: 1
+      - path: Armature/Leg.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R/foot.R_end
+        weight: 1
+      - path: BezierCircle.006
+        weight: 1
+      - path: BezierCircle.007
+        weight: 1
+      - path: BezierCircle.008
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder.000
+        weight: 1
+      - path: Cylinder.002
+        weight: 1
+      - path: Cylinder.003
+        weight: 1
+      - path: Cylinder.004
+        weight: 1
+      - path: Cylinder.005
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sphere.002
+        weight: 1
+      - path: Sphere.004
+        weight: 1
+      - path: Sphere.005
+        weight: 1
+      - path: Sphere.006
+        weight: 1
+      - path: Sphere.008
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle_2.001
+      takeName: Armature|Idle_2.001
+      firstFrame: 0
+      lastFrame: 36
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm/Shoulder.L
+        weight: 1
+      - path: Armature/Arm/Shoulder.L/Arm/Shoulder.L_end
+        weight: 1
+      - path: Armature/Body
+        weight: 1
+      - path: Armature/Body/Body_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Head/Head_end
+        weight: 1
+      - path: Armature/Leg.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L/foot.L_end
+        weight: 1
+      - path: Armature/Leg.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R/foot.R_end
+        weight: 1
+      - path: BezierCircle.006
+        weight: 1
+      - path: BezierCircle.007
+        weight: 1
+      - path: BezierCircle.008
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder.000
+        weight: 1
+      - path: Cylinder.002
+        weight: 1
+      - path: Cylinder.003
+        weight: 1
+      - path: Cylinder.004
+        weight: 1
+      - path: Cylinder.005
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sphere.002
+        weight: 1
+      - path: Sphere.004
+        weight: 1
+      - path: Sphere.005
+        weight: 1
+      - path: Sphere.006
+        weight: 1
+      - path: Sphere.008
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Idle_3
+      takeName: Armature|Idle_3
+      firstFrame: 0
+      lastFrame: 54
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm/Shoulder.L
+        weight: 1
+      - path: Armature/Arm/Shoulder.L/Arm/Shoulder.L_end
+        weight: 1
+      - path: Armature/Body
+        weight: 1
+      - path: Armature/Body/Body_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Head/Head_end
+        weight: 1
+      - path: Armature/Leg.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L/foot.L_end
+        weight: 1
+      - path: Armature/Leg.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R/foot.R_end
+        weight: 1
+      - path: BezierCircle.006
+        weight: 1
+      - path: BezierCircle.007
+        weight: 1
+      - path: BezierCircle.008
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder.000
+        weight: 1
+      - path: Cylinder.002
+        weight: 1
+      - path: Cylinder.003
+        weight: 1
+      - path: Cylinder.004
+        weight: 1
+      - path: Cylinder.005
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sphere.002
+        weight: 1
+      - path: Sphere.004
+        weight: 1
+      - path: Sphere.005
+        weight: 1
+      - path: Sphere.006
+        weight: 1
+      - path: Sphere.008
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Walk_1
+      takeName: Armature|Walk_1
+      firstFrame: 0
+      lastFrame: 72
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 0
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm/Shoulder.L
+        weight: 1
+      - path: Armature/Arm/Shoulder.L/Arm/Shoulder.L_end
+        weight: 1
+      - path: Armature/Body
+        weight: 1
+      - path: Armature/Body/Body_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Head/Head_end
+        weight: 1
+      - path: Armature/Leg.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L/foot.L_end
+        weight: 1
+      - path: Armature/Leg.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R/foot.R_end
+        weight: 1
+      - path: BezierCircle.006
+        weight: 1
+      - path: BezierCircle.007
+        weight: 1
+      - path: BezierCircle.008
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder.000
+        weight: 1
+      - path: Cylinder.002
+        weight: 1
+      - path: Cylinder.003
+        weight: 1
+      - path: Cylinder.004
+        weight: 1
+      - path: Cylinder.005
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sphere.002
+        weight: 1
+      - path: Sphere.004
+        weight: 1
+      - path: Sphere.005
+        weight: 1
+      - path: Sphere.006
+        weight: 1
+      - path: Sphere.008
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    - serializedVersion: 16
+      name: Armature|Walk_2
+      takeName: Armature|Walk_2
+      firstFrame: 0
+      lastFrame: 90
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      hasAdditiveReferencePose: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: Armature
+        weight: 1
+      - path: Armature/Arm/Shoulder.L
+        weight: 1
+      - path: Armature/Arm/Shoulder.L/Arm/Shoulder.L_end
+        weight: 1
+      - path: Armature/Body
+        weight: 1
+      - path: Armature/Body/Body_end
+        weight: 1
+      - path: Armature/Bone
+        weight: 1
+      - path: Armature/Bone/Bone_end
+        weight: 1
+      - path: Armature/Head
+        weight: 1
+      - path: Armature/Head/Head_end
+        weight: 1
+      - path: Armature/Leg.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L
+        weight: 1
+      - path: Armature/Leg.L/foot.L/foot.L_end
+        weight: 1
+      - path: Armature/Leg.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R
+        weight: 1
+      - path: Armature/Leg.R/foot.R/foot.R_end
+        weight: 1
+      - path: BezierCircle.006
+        weight: 1
+      - path: BezierCircle.007
+        weight: 1
+      - path: BezierCircle.008
+        weight: 1
+      - path: Camera
+        weight: 1
+      - path: Cylinder
+        weight: 1
+      - path: Cylinder.000
+        weight: 1
+      - path: Cylinder.002
+        weight: 1
+      - path: Cylinder.003
+        weight: 1
+      - path: Cylinder.004
+        weight: 1
+      - path: Cylinder.005
+        weight: 1
+      - path: Lamp
+        weight: 1
+      - path: Sphere
+        weight: 1
+      - path: Sphere.001
+        weight: 1
+      - path: Sphere.002
+        weight: 1
+      - path: Sphere.004
+        weight: 1
+      - path: Sphere.005
+        weight: 1
+      - path: Sphere.006
+        weight: 1
+      - path: Sphere.008
+        weight: 1
+      maskType: 3
+      maskSource: {instanceID: 0}
+      additiveReferencePoseFrame: 0
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

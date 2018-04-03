@@ -1,0 +1,1 @@
+Detta projekt är ett spel som blev skapt på 48 timmar med två andra arbetskamrater från NTI gymnasiet.

@@ -1,0 +1,181 @@
+fileFormatVersion: 2
+guid: f0321e9068758e444837e3f6e09a09bc
+timeCreated: 1503901181
+licenseType: Free
+ModelImporter:
+  serializedVersion: 19
+  fileIDToRecycleName:
+    100000: Arm/Shoulder.L
+    100002: Arm/Shoulder.L_end
+    100004: Armature
+    100006: Body
+    100008: Body_end
+    100010: Bone
+    100012: Bone_end
+    100014: Camera
+    100016: Cylinder
+    100018: Cylinder.000
+    100020: Cylinder.002
+    100022: Cylinder.003
+    100024: Cylinder.004
+    100026: foot.L
+    100028: foot.L_end
+    100030: foot.R
+    100032: foot.R_end
+    100034: Head
+    100036: Head_end
+    100038: Lamp
+    100040: Lamp.001
+    100042: Leg.L
+    100044: Leg.R
+    100046: //RootNode
+    100048: Sphere
+    100050: Sphere.001
+    100052: Sphere.002
+    100054: Sphere.004
+    100056: Sphere.005
+    100058: Sphere.006
+    100060: Sphere.008
+    400000: Arm/Shoulder.L
+    400002: Arm/Shoulder.L_end
+    400004: Armature
+    400006: Body
+    400008: Body_end
+    400010: Bone
+    400012: Bone_end
+    400014: Camera
+    400016: Cylinder
+    400018: Cylinder.000
+    400020: Cylinder.002
+    400022: Cylinder.003
+    400024: Cylinder.004
+    400026: foot.L
+    400028: foot.L_end
+    400030: foot.R
+    400032: foot.R_end
+    400034: Head
+    400036: Head_end
+    400038: Lamp
+    400040: Lamp.001
+    400042: Leg.L
+    400044: Leg.R
+    400046: //RootNode
+    400048: Sphere
+    400050: Sphere.001
+    400052: Sphere.002
+    400054: Sphere.004
+    400056: Sphere.005
+    400058: Sphere.006
+    400060: Sphere.008
+    2300000: Sphere.004
+    3300000: Sphere.004
+    4300000: Cylinder
+    4300002: Cylinder.000
+    4300004: Cylinder.002
+    4300006: Cylinder.003
+    4300008: Cylinder.004
+    4300010: Sphere
+    4300012: Sphere.001
+    4300014: Sphere.002
+    4300016: Sphere.005
+    4300018: Sphere.006
+    4300020: Sphere.008
+    4300022: Sphere.004
+    7400000: Armature|((JUMP))
+    7400002: Armature|(JUMP)
+    7400004: Armature|(WALK)
+    7400006: Armature|Action
+    7400008: Armature|ArmatureAction
+    7400010: Armature|Climbing_Rope
+    7400012: Armature|FALL
+    7400014: Armature|Idle_1
+    7400016: Armature|Idle_2.001
+    7400018: Armature|JUMP
+    7400020: Armature|JUMP.001
+    7400022: Armature|Push_1
+    7400024: Armature|Push_1_new
+    7400026: Armature|Walk_1
+    7400028: Armature|Walk_2
+    7400030: Armature|Walk_3
+    9500000: //RootNode
+    13700000: Cylinder
+    13700002: Cylinder.000
+    13700004: Cylinder.002
+    13700006: Cylinder.003
+    13700008: Cylinder.004
+    13700010: Sphere
+    13700012: Sphere.001
+    13700014: Sphere.002
+    13700016: Sphere.005
+    13700018: Sphere.006
+    13700020: Sphere.008
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    resampleCurves: 1
+    optimizeGameObjects: 0
+    motionNodeName: 
+    rigImportErrors: 
+    rigImportWarnings: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: 0.5
+    animationPositionError: 0.5
+    animationScaleError: 0.5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    normalImportMode: 0
+    tangentImportMode: 3
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    serializedVersion: 2
+    human: []
+    skeleton: []
+    armTwist: 0.5
+    foreArmTwist: 0.5
+    upperLegTwist: 0.5
+    legTwist: 0.5
+    armStretch: 0.05
+    legStretch: 0.05
+    feetSpacing: 0
+    rootMotionBoneName: 
+    rootMotionBoneRotation: {x: 0, y: 0, z: 0, w: 1}
+    hasTranslationDoF: 0
+    hasExtraRoot: 0
+    skeletonHasParents: 1
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

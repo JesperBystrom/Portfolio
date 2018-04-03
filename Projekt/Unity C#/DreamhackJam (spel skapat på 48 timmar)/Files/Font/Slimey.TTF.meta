@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 437948e222d7e39439c5d65ea27e80a0
+timeCreated: 1506810637
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Liquidism part 2
+  fontNames:
+  - Liquidism part 2
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
