@@ -27,42 +27,26 @@ public class Entity {
 	protected float speed = 0;
 	protected boolean turn = false;
 	protected boolean jump = false;
+	protected boolean invincible = false;
 	protected int dir = 1;//-1 or 1;
 	protected float jumpspeed = 0;
 	private float holdtime = 0;
 	protected float maxSpeed = 0;
+	private float yOld;
 	
 	public Entity(Game game){
 		this.game = game;
 	}
 	
 	public void update(){
-		if(velocity.y < 4)
+		if(Game.paused()){
+			return;
+		}
+		if(velocity.y < 10)
 			velocity.y += Game.GRAVITY;
-		
-		if(holdtime < 8 && game.getKeyManager().getKey(KeyEvent.VK_SPACE) && !onGround){
-			holdtime++;
-			velocity.y -= 0.8f;
-			System.out.println(holdtime);
-		}
-		if(!game.getKeyManager().getKey(KeyEvent.VK_SPACE) || onGround)
-			holdtime = 0;
-		
-		if(Game.state == State.PAUSED){
-			velocity.x = 0;
-			velocity.y = 0;
-		}
 		
 		List<BoxCollider> colliders = game.getLevel().getColliders(collider, 4);
 		colliders.forEach(i -> {
-			if(game.getKeyManager().getKey(KeyEvent.VK_SPACE) && holdtime == 0){
-				if((collider.intersect(i, 0, 1))){
-					velocity.y = -jumpspeed;
-					holdtime++;
-					jump = true;
-					onGround = false;
-				}
-			}
 			if(collider.intersect(i, velocity.x, 0)){
 				onHorizontalCollision(i);
 			}
@@ -74,6 +58,7 @@ public class Entity {
 				onVerticalCollison(i);
 			} 
 		});
+		//System.out.println("vel: " + velocity.y);
 		position.y += velocity.y;
 		
 		List<Entity> entities = game.getLevel().getEntityCollisions(collider);
@@ -87,8 +72,16 @@ public class Entity {
 	}
 	
 	public void render(RenderHandler renderHandler){
-		collider.render(renderHandler);
+		if(invincible){
+			if((game.getTicks() & 2) == 0) return;
+			
+		}
+		if(Game.DEBUG)
+			collider.render(renderHandler);
 		renderHandler.render(new Vector2f(position.x,position.y), sprite, flip);
+	}
+	
+	public void move(byte direction){
 	}
 	
 	public void setPosition(Vector2f position){
@@ -97,17 +90,18 @@ public class Entity {
 	}
 	
 	public void onCollision(Entity e){
+		if(e.getSolid() == false) return;
 	}
 	
 	public void onHorizontalCollision(BoxCollider collider){
-		while(!collider.intersect(collider, Math.signum(velocity.x), 0)){
+		while(!this.collider.intersect(collider, Math.signum(velocity.x), 0)){
 			position.x += Math.signum(velocity.x);
 		}
 		velocity.x = 0;
 	}
 	
 	public void onVerticalCollison(BoxCollider collider){
-		while(!collider.intersect(collider, 0, Math.signum(velocity.y))){
+		while(!this.collider.intersect(collider, 0, Math.signum(velocity.y))){
 			position.y += Math.signum(velocity.y);
 		}
 		velocity.y = 0;
@@ -118,6 +112,14 @@ public class Entity {
 	}
 	
 	public boolean getSolid(){
-		return true;
+		return !getInvincible();
+	}
+
+	public void invincible() {
+		invincible = true;
+	}
+
+	public boolean getInvincible() {
+		return invincible;
 	}
 }

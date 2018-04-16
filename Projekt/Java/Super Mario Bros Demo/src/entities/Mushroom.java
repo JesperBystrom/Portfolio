@@ -48,7 +48,9 @@ public class Mushroom extends Entity {
 		if(e instanceof Player){
 			//make player grow
 			Player p = (Player)e;
-			p.grow();
+			if(p.isSmall()){
+				p.grow();
+			}
 			game.getLevel().removeEntity(this);
 		}
 	}

@@ -8,28 +8,46 @@ import main.Game;
 import main.RenderHandler;
 import main.Sprite;
 import main.SpriteFactory;
-import main.Vector2f;
-import main.Game.State;
 import main.SpriteFactory.SpriteType;
+import main.Timer;
+import main.Vector2f;
 import tiles.Tile;
 
-enum PlayerState {
+enum GrowState {
 	SMALL, BIG
+}
+
+enum PlayerState {
+	IDLING, MOVING, JUMPING, TURNING
 }
 
 public class Player extends Mob {
 
-	private float growTimer = 0;
-	private PlayerState state = PlayerState.SMALL;
+	//private float growTimer = -1;
+	private float holdTime = 0;
+	private float baseAcceleration = 0.0882f;
+	private float acceleration = baseAcceleration;
+	private GrowState growState = GrowState.SMALL;
+	private PlayerState state = PlayerState.IDLING;
 	private Animation bigMarioAnimation;
 	private Animation smallMarioAnimation;
+	private Sprite[] growPattern = {
+			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE),
+			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE),
+			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE),
+			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE),
+			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE),
+			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_BIG_IDLE),
+			
+	};
 	public Sprite idleSprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
 	public Sprite jumpSprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_JUMP);
 	public Sprite turnSprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_TURN);
+	private Timer growTimer = new Timer(growPattern.length-1);
 	
 	public Player(Game game) {
 		super(game);
-		jumpspeed = 4.6f;
+		jumpspeed = 4.3f;
 		maxSpeed = 1.5f;
 		setPosition(new Vector2f(128,0));
 		
@@ -47,14 +65,14 @@ public class Player extends Mob {
 		game.addAnimation(animation);
 		game.addAnimation(smallMarioAnimation);
 		game.addAnimation(bigMarioAnimation);
+		game.addTimer(growTimer);
 		
 		sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
 	}
 
 	@Override
 	public void update() {
-		
-		switch(state){
+		switch(growState){
 		case BIG:
 			animation = bigMarioAnimation;
 			idleSprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_BIG_IDLE);
@@ -66,6 +84,11 @@ public class Player extends Mob {
 			collider.xo = -2;
 			break;
 		case SMALL:
+			collider.width = 12;
+			collider.height = 12;
+			collider.xo = 2;
+			collider.yo = 4;
+
 			animation = smallMarioAnimation;
 			idleSprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
 			jumpSprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_JUMP);
@@ -73,130 +96,84 @@ public class Player extends Mob {
 			break;
 		}
 		
-		if(growTimer > 0){
-			growTimer++;
-			//sprite = idleSprite;
-			velocity.x = 0;
-			velocity.y = 0;
-			jump = false;
-			turn = false;
-		}
-		
-		if(Game.state == State.PAUSED) return;
 		if(!game.getKeyManager().getAnyArrowKey()){
 			if(velocity.x > 0)
-				velocity.x -= 0.375f;
+				velocity.x -= 0.375f; //deaccelerate
 			else if(velocity.x < 0)
-				velocity.x += 0.375f;
+				velocity.x += 0.375f; //deaccelerate
 			
 			if(velocity.x < 0.375f && velocity.x > -0.375f)
 				velocity.x = 0;
 		}
+		
+		//Idle
+		if(velocity.x == 0 || onGround)
+			idle();
+		
+		//Move
 		if(game.getKeyManager().getKey(KeyEvent.VK_LEFT)){
-			if(turn)
-				turn = false;
-			if(onGround){
-				flip = Sprite.FLIP_X;
-				if(velocity.x > 0.5f){
-					turn = true;
-				}
-				dir = -1;
-			} else {
-				turn = false;
-			}
-			
-			if(velocity.x > -maxSpeed){
-				if(onGround){
-					velocity.x -= 0.0882f;
-				} else {
-					velocity.x -= 0.0441f;
-				}
-			}
+			move((byte)-1);
 		}
+		
 		if(game.getKeyManager().getKey(KeyEvent.VK_RIGHT)){
-			if(turn)
-				turn = false;
-			if(onGround){
-				flip = -1;
-				if(velocity.x < -0.5f){
-					turn = true;
-				}
-				dir = 1;
-			} else {
-				turn = false;
-			}
-			
-			if(velocity.x < maxSpeed){
-				if(onGround){
-					velocity.x += 0.0882f;
-				} else {
-					velocity.x += 0.0441f;
-				}
-			}
-		} 
+			move((byte)1);
+		}
+		
+		//Sprint
 		if(game.getKeyManager().getKey(KeyEvent.VK_C)){
 			maxSpeed = 2.5f;
 		} else {
 			maxSpeed = 1.5f;
-			if(velocity.x > maxSpeed)
-				velocity.x -= 0.375f;
-			else if(velocity.x < -maxSpeed)
-				velocity.x += 0.375f;
 		}
 		
-		animation.setSpeed(Math.abs(velocity.x));
+		//Hold space for higher jumps
+		if(holdTime >= 0)
+			holdTime++;
+		if(holdTime > 2 && holdTime < 24 && game.getKeyManager().getKey(KeyEvent.VK_SPACE) && !onGround){
+			velocity.y -= (0.2f + Math.abs(velocity.x/20));
+		} else if(!game.getKeyManager().getKey(KeyEvent.VK_SPACE) || onGround)
+			holdTime = 0;
+		
+		
+		//Grow
+		if(growTimer.getStarted()){
+			sprite = growPattern[(int)growTimer.getTime()];
+			if(growTimer.getFinished()){
+				setGrowState(GrowState.BIG);
+			}
+		}
+		
+		//Jump
+		if(game.getKeyManager().getKey(KeyEvent.VK_SPACE) && onGround){
+			jump();
+		}
+		
 		if(position.x < game.getWall()){
 			position.x = game.getWall();
 		}
+		
+		animation.setSpeed(Math.abs(velocity.x));
 		
 		super.update();
 	}
 	
 	@Override
 	public void render(RenderHandler renderHandler) {
-		if(velocity.x == 0)
-			this.sprite = idleSprite;
-		else
-			this.sprite = animation.getCurrentFrame();//SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
-		
-		if(jump){
+		switch(state){
+		case IDLING:
+			sprite = idleSprite;
+			break;
+		case MOVING:
+			sprite = animation.getCurrentFrame();
+			break;
+		case JUMPING:
 			sprite = jumpSprite;
-			if(onGround)
-				jump = false;
-		}
-		if(turn){
+			break;
+		case TURNING:
 			sprite = turnSprite;
-			if(Math.round(velocity.x) == 0){
-				turn = false;
-				animation.setCurrentFrame(0);
-			}
+			break;
 		}
 		
-		if(growTimer > 0){
-			if(growTimer > 10){
-				sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE);
-				sprite.xOffset = 2 * -dir;
-			}
-			if(growTimer > 30){
-				sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
-			}
-			if(growTimer > 50){
-				sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE);
-				sprite.xOffset = 2 * -dir;
-			}
-			if(growTimer > 60){
-				sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
-			}
-			if(growTimer > 70){
-				sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_BIG_IDLE);
-				sprite.xOffset = 2 * -dir;
-			}
-			if(growTimer > 73){
-				Game.state = State.GAME;
-				growTimer = 0;
-				state = PlayerState.BIG;
-			}	
-		}
 		super.render(renderHandler);
 	}
 	
@@ -209,13 +186,84 @@ public class Player extends Mob {
 			//if bounce on it, for question block etc
 			Tile t = game.getLevel().getTile((int)collider.position.x>>4, (int)collider.position.y>>4);
 			if(t != null)
-				t.bump(this);
+				if(t.canBump())
+					t.bump(this);
 		}
 	}
 
 	public void grow() {
-		Game.state = State.PAUSED;
-		growTimer++;
+		Game.pause(60);
+		growTimer.start();
 		sprite = idleSprite;
+	}
+	
+	public void idle(){
+		setPlayerState(PlayerState.IDLING);
+	}
+	
+	public void turn() {
+		setPlayerState(PlayerState.TURNING);
+		sprite.xOffset *= -dir;
+		
+		sprite = turnSprite;
+		if(Math.round(velocity.x) == 0){
+			animation.setCurrentFrame(0);
+			return;
+		}
+	}
+	
+	public void jump() {
+		setPlayerState(PlayerState.JUMPING);
+		acceleration = baseAcceleration / 2;
+		velocity.y = -jumpspeed;
+		onGround = false;
+	}
+	
+	@Override
+	public void move(byte direction) {
+		if(getPlayerState() == PlayerState.IDLING)
+			setPlayerState(PlayerState.MOVING);
+		
+		if(velocity.x < maxSpeed && velocity.x > -maxSpeed){
+			velocity.x += acceleration * direction;
+		}
+		
+		if(velocity.x > maxSpeed)
+			velocity.x -= 0.375f;
+		else if(velocity.x < -maxSpeed)
+			velocity.x += 0.375f;
+		
+		if(onGround){
+			flip = (byte) -direction;
+			if(direction == 1){
+				if(velocity.x < -0.5f)
+					turn();
+			}
+			
+			if(direction == -1){
+				if(velocity.x > 0.5f)
+					turn();
+			}
+		}
+	}
+	
+	public boolean isSmall() {
+		return growState == GrowState.SMALL;
+	}
+	
+	public boolean isBig(){
+		return growState == GrowState.BIG;
+	}
+	
+	public void setGrowState(GrowState state){
+		this.growState = state;
+	}
+	
+	public void setPlayerState(PlayerState state){
+		this.state = state;
+	}
+	
+	public PlayerState getPlayerState(){
+		return state;
 	}
 }

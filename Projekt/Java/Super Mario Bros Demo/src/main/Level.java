@@ -61,6 +61,18 @@ public class Level {
 				case 0xFF7F7F7F:
 					setTile(x, y, new TileSolid(SpriteFactory.getInstance().getSprite(SpriteType.TILE_BRICK_DEFAULT)));
 					break;
+				case 0xFFE75A10:
+					setTile(x, y, new TileSolid(SpriteFactory.getInstance().getSprite(SpriteType.TILE_SQUARE_DEFAULT)));
+					break;
+				case 0xFF8CD600:
+					setTile(x, y, new TileSolid(SpriteFactory.getInstance().getSprite(SpriteType.TILE_PORTAL_PART)));
+					break;
+				case 0xFF5A8700:
+					setTile(x, y, new TileSolid(SpriteFactory.getInstance().getSprite(SpriteType.TILE_PORTAL_TOP)));
+					break;
+				case 0xFF732D08:
+					
+					break;
 				}
 			}
 		}
@@ -126,17 +138,14 @@ public class Level {
 	public List<BoxCollider> getColliders(BoxCollider collider, int radius){
 		Vector2 tPos = Tile.toTileCoordinates(collider.position);
 		ArrayList<BoxCollider> colliders = new ArrayList<BoxCollider>();
-//		for (int i = 0; i < entities.size(); i++) {
-//			if(entities.get(i).getSolid() && !collider.equals(entities.get(i).collider))
-//				colliders.add(entities.get(i).collider);
-//		}
+		
 		for(int xt=tPos.x-radius;xt<tPos.x+radius;xt++){
 			for(int yt=tPos.y-radius;yt<tPos.y+radius;yt++){
 				if(!getInBounds(xt, 0, tileWidth, yt, 0, tileHeight)) continue;
 				Tile t = getTile(xt,yt);
 				if(t != null){
 					if(t.getSolid())
-						colliders.add(new BoxCollider(xt*16, yt*16, 16, 16));
+						colliders.add(new BoxCollider(new Vector2f(xt*16, yt*16), t.getWidth(), t.getHeight()));
 				}
 			}
 		}

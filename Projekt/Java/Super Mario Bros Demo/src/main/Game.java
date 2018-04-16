@@ -9,19 +9,21 @@ import java.util.ArrayList;
 import java.util.List;
 
 import animation.Animation;
+import entities.Goomba;
 import entities.Player;
-import etc.Tools;
 
 public class Game implements Runnable {
 	public static final int HEIGHT = 120*4;
 	public static final int WIDTH = 128*4;
 	public static final int SPRITE_SIZE = 16;
-	public static final float GRAVITY = 0.6f;
+	public static final float GRAVITY = 0.3f;
+	public static final boolean DEBUG = false;
 	private BufferedImage image = new BufferedImage(WIDTH, HEIGHT, BufferedImage.TYPE_INT_RGB);
 	private int[] pixels = ((DataBufferInt)image.getRaster().getDataBuffer()).getData();
 	private RenderHandler renderHandler = new RenderHandler(this, pixels);
 	private ArrayList<Animation> animations = new ArrayList<Animation>();
 	private boolean running = true;
+	private ArrayList<Timer> timers = new ArrayList<Timer>();
 	public Player player = new Player(this);
 	//public Mob mob = new Mob(this);
 	private Level level = new Level(this, 228, 14);
@@ -29,7 +31,8 @@ public class Game implements Runnable {
 	private KeyManager keyManager;
 	private long ticks;
 	public static State state = State.GAME;
-	private float pauseTimer = 0;
+	public static int SPEED = 0;
+	private static float pauseTimer = 0;
 	public Vector2f scroll = new Vector2f(0,0);
 	
 	public static enum State {
@@ -46,9 +49,16 @@ public class Game implements Runnable {
 		level.addEntity(player);
 		scroll.x = Window.getXMiddle(player.position);
 		scroll.y = -128;
+		Goomba g = new Goomba(this);
+		level.addEntity(g);
 	}
 	
 	public void update(){
+		if(Game.paused()){
+			pauseTimer--;
+			if(pauseTimer <= 0)
+				Game.resume();
+		}
 		level.update();
 		
 		if(Window.getXMiddle(player.position) > scroll.x){
@@ -56,6 +66,10 @@ public class Game implements Runnable {
 			scroll.x += player.velocity.x;
 		}
 		animations.forEach(a -> a.update());
+		
+		for(int i=0;i<timers.size();i++){
+			timers.get(i).update(this);
+		}
 	}
 	
 	public void render(){
@@ -67,10 +81,13 @@ public class Game implements Runnable {
 		renderHandler.clear();
 		level.render(renderHandler);
 		
-//		List<BoxCollider> colliders = getLevel().getColliders(player.collider, 16);
-//		colliders.forEach(i -> {
-//			renderHandler.renderCollider(i, Sprite.FLIP_NONE);
-//		});
+		if(Game.DEBUG){
+			List<BoxCollider> colliders = getLevel().getColliders(player.collider, 16);
+			colliders.forEach(i -> {
+				i.render(renderHandler);
+			});
+		}
+		
 		g.drawImage(image, 0, 0, WIDTH, HEIGHT, null);
 		int w = WIDTH*2;
 		int h = HEIGHT*2;
@@ -157,12 +174,26 @@ public class Game implements Runnable {
 		animations.add(animation);
 	}
 	
-	public void pause(float timer){
+	public static void pause(float timer){
 		state = State.PAUSED;
 		pauseTimer = timer;
+		SPEED = 0;
 	}
 	
-	public void resume(){
+	public static void resume(){
 		state = State.GAME;
+		SPEED = 1;
+	}
+	
+	public static boolean paused(){
+		return state == State.PAUSED;
+	}
+
+	public void addTimer(Timer timer) {
+		timers.add(timer);
+	}
+
+	public void removeTimer(Timer timer) {
+		timers.remove(timer);
 	}
 }

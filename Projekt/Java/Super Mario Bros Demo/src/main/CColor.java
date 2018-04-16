@@ -18,6 +18,8 @@ public class CColor {
 	public static final int COIN_YELLOW = 0xE69C21;
 	public static final int DARK_RED = 0xB53121;
 	public static final int NONE = 0x00;
+	public static final int LIME = 0x80D010;
+	public static final int GRAY = 0x202020;
 	
 	public int r,g,b;
 	

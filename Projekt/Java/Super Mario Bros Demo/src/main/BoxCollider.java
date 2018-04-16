@@ -15,11 +15,13 @@ public class BoxCollider {
 		this.width = width;
 		this.height = height;
 	}
+	
 	public BoxCollider(float x, float y, int width, int height){
 		this.position = new Vector2f(x,y);
 		this.width = width;
 		this.height = height;
 	}
+	
 	public BoxCollider(Vector2f position, int width, int height, float xo, float yo){
 		this.position = position;
 		this.width = width;
@@ -42,18 +44,10 @@ public class BoxCollider {
 		int w1 = collider.width;
 		int h1 = collider.height;
 		
-		/*if(x0-w0 > x1 + w1 || x1 - w1 > x0+w0){
-			return false;
-		}
-		if(y0-h0 > y1+h1 || y1-h1 > y0+h0){
-			return false;
-		}
-		return true;*/
 		return (x0 < x1 + w1 && x0 + w0 > x1 && y0 < y1 + h1 && y0 + h0 > y1);
 	}
 	
 	public void render(RenderHandler renderHandler){
 		renderHandler.renderCollider(this, xo, yo);
-		//renderHandler.render(position, SpriteFactory.getInstance().getSprite(SpriteType.TILE_QUESTIONMARK_USED), Sprite.FLIP_NONE);
 	}
 }

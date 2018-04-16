@@ -90,6 +90,6 @@ public class Tile {
 	}
 	
 	public boolean canBump(){
-		return true;
+		return sprite.yOffset == 0;
 	}
 }
