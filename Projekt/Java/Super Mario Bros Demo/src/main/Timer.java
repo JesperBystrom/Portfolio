@@ -17,13 +17,8 @@ public class Timer {
 	}
 	
 	public void update(Game game){
-		if(!getStarted()) return;
-		if(game.getTicks() % 10 == 0){
-			if(getFinished()){
-				stop();
-			}
-			time -= 1;
-		}
+		if(!getStarted() || game.getTicks() % 10 != 0) return;
+		time -= 1;
 	}
 	
 	public void start(){

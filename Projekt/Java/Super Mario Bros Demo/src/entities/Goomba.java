@@ -10,7 +10,14 @@ public class Goomba extends Entity {
 	public Goomba(Game game) {
 		super(game);
 		this.sprite = SpriteFactory.getInstance().getSprite(SpriteType.ENEMY_GOOMBA);
-		velocity.x = 1;
+		velocity.x = -0.5f;
+	}
+	
+	@Override
+	public void update() {
+		if(position.x - game.player.position.x > 140) return;
+		//if(position.distance(game.player.position) > 140) return;
+		super.update();
 	}
 	
 	@Override

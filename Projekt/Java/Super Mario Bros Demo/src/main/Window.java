@@ -40,7 +40,8 @@ public class Window {
 	public static float getXMiddle(Vector2f position){
 		return position.x - Game.WIDTH/2;
 	}
+	
 	public static float getYMiddle(Vector2f position){
-		return position.y - (Game.HEIGHT)/2;
+		return position.y - Game.HEIGHT/2;
 	}
 }

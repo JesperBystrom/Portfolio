@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import animation.Animation;
-import entities.Goomba;
+import entities.Oven;
 import entities.Player;
 
 public class Game implements Runnable {
@@ -49,8 +49,9 @@ public class Game implements Runnable {
 		level.addEntity(player);
 		scroll.x = Window.getXMiddle(player.position);
 		scroll.y = -128;
-		Goomba g = new Goomba(this);
-		level.addEntity(g);
+		
+		Oven oven = new Oven();
+		
 	}
 	
 	public void update(){

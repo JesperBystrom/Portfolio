@@ -18,7 +18,7 @@ enum GrowState {
 }
 
 enum PlayerState {
-	IDLING, MOVING, JUMPING, TURNING
+	IDLING, MOVING, JUMPING, TURNING, GROWING
 }
 
 public class Player extends Mob {
@@ -37,7 +37,7 @@ public class Player extends Mob {
 			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE),
 			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE),
 			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE),
-			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_BIG_IDLE),
+			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_BIG_IDLE)
 			
 	};
 	public Sprite idleSprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
@@ -134,12 +134,14 @@ public class Player extends Mob {
 		} else if(!game.getKeyManager().getKey(KeyEvent.VK_SPACE) || onGround)
 			holdTime = 0;
 		
-		
 		//Grow
 		if(growTimer.getStarted()){
-			sprite = growPattern[(int)growTimer.getTime()];
 			if(growTimer.getFinished()){
 				setGrowState(GrowState.BIG);
+				if(growTimer.getFinished()){
+					growTimer.stop();
+				}
+				setPlayerState(PlayerState.IDLING);
 			}
 		}
 		
@@ -157,6 +159,10 @@ public class Player extends Mob {
 		super.update();
 	}
 	
+	public GrowState getGrowState() {
+		return growState;
+	}
+
 	@Override
 	public void render(RenderHandler renderHandler) {
 		switch(state){
@@ -172,8 +178,10 @@ public class Player extends Mob {
 		case TURNING:
 			sprite = turnSprite;
 			break;
+		case GROWING:
+			sprite = growPattern[(int)growTimer.getTime()];
+			break;
 		}
-		
 		super.render(renderHandler);
 	}
 	
@@ -192,16 +200,18 @@ public class Player extends Mob {
 	}
 
 	public void grow() {
-		Game.pause(60);
+		setPlayerState(PlayerState.GROWING);
 		growTimer.start();
-		sprite = idleSprite;
+		Game.pause(60);
 	}
 	
 	public void idle(){
-		setPlayerState(PlayerState.IDLING);
+		if(getPlayerState() != PlayerState.GROWING || growTimer.getFinished())
+			setPlayerState(PlayerState.IDLING);
 	}
 	
 	public void turn() {
+		if(getPlayerState() == PlayerState.MOVING)
 		setPlayerState(PlayerState.TURNING);
 		sprite.xOffset *= -dir;
 		

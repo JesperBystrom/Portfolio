@@ -9,6 +9,7 @@ import java.util.List;
 import javax.imageio.ImageIO;
 
 import entities.Entity;
+import entities.Goomba;
 import etc.Tools;
 import main.SpriteFactory.SpriteType;
 import particles.ParticleSystem;
@@ -71,7 +72,9 @@ public class Level {
 					setTile(x, y, new TileSolid(SpriteFactory.getInstance().getSprite(SpriteType.TILE_PORTAL_TOP)));
 					break;
 				case 0xFF732D08:
-					
+					Goomba g = new Goomba(game);
+					g.setPosition(new Vector2f(x*16,y*16));
+					addEntity(g);
 					break;
 				}
 			}
@@ -145,7 +148,7 @@ public class Level {
 				Tile t = getTile(xt,yt);
 				if(t != null){
 					if(t.getSolid())
-						colliders.add(new BoxCollider(new Vector2f(xt*16, yt*16), t.getWidth(), t.getHeight()));
+						colliders.add(new BoxCollider(new Vector2f(xt<<4, yt<<4), t.getWidth(), t.getHeight()));
 				}
 			}
 		}
