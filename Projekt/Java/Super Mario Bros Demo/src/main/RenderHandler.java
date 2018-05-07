@@ -24,11 +24,16 @@ public class RenderHandler {
 	}
 	
 	public void render(Vector2f position, Sprite sprite, byte flip){
+		if(sprite == null) return;
 		float xp = position.x;
 		float yp = position.y;
 		xp -= game.scroll.x;
 		yp -= game.scroll.y;
 		for(int y=0;y<sprite.height;y++){
+			int yf = y;
+			if(flip == Sprite.FLIP_Y){
+				yf = (sprite.width-4)-y;
+			}
 			for(int x=0;x<sprite.width;x++){
 				
 				int xf = x;
@@ -43,28 +48,32 @@ public class RenderHandler {
 				int pixel = sprite.pixels[x+y*sprite.width];
 				int color = ((pixel >> 16) & 0xFF);
 				
-				if(!Level.getInBounds(x+xp, 0, Game.WIDTH, y+yp, 0, Game.HEIGHT) || color == 0x00) continue;
+				if(!Level.getInBounds(xf+xp+sprite.xOffset, 0, Game.WIDTH, yf+yp+sprite.yOffset, 0, Game.HEIGHT) || color == 0x00) continue;
 				
-				pixels[((int)(xf+xp+sprite.xOffset))+((int)(y+yp+sprite.yOffset))*Game.WIDTH] = sprite.color[(color/85)-1];//sheet.pixels[(x+8)+y*sheet.width];
+				pixels[((int)(xf+xp+sprite.xOffset))+((int)(yf+yp+sprite.yOffset))*Game.WIDTH] = sprite.color[(color/85)-1];//sheet.pixels[(x+8)+y*sheet.width];
+			}
+		}
+	}
+	
+	public void renderColor(Vector2f position, float xo, float yo, int width, int height, int color){
+		position.x -= game.scroll.x;
+		position.y -= game.scroll.y;
+		
+		position.x += xo;
+		position.y += yo;
+		
+		for(int y=0;y<height;y++){
+			for(int x=0;x<width;x++){
+				
+				if(!Level.getInBounds(x+position.x, 0, Game.WIDTH, y+position.y, 0, Game.HEIGHT)) continue;
+				
+				pixels[((int)(x+position.x))+((int)(y+position.y))*Game.WIDTH] = color;//sheet.pixels[(x+8)+y*sheet.width];
 			}
 		}
 	}
 	
 	public void renderCollider(BoxCollider col, float xo, float yo){
-		Vector2f position = new Vector2f(col.position.x, col.position.y);
-		position.x += xo;
-		position.y += yo;
-		
-		position.x -= game.scroll.x;
-		position.y -= game.scroll.y;
-		for(int y=0;y<col.height;y++){
-			for(int x=0;x<col.width;x++){
-				
-				if(!Level.getInBounds(x+position.x, 0, Game.WIDTH, y+position.y, 0, Game.HEIGHT)) continue;
-				
-				pixels[((int)(x+position.x))+((int)(y+position.y))*Game.WIDTH] = 0xFF0000;//sheet.pixels[(x+8)+y*sheet.width];
-			}
-		}
+		renderColor(col.position, xo, yo, col.width, col.height, 0xFF0000);
 	}
 	
 	public void clear() {

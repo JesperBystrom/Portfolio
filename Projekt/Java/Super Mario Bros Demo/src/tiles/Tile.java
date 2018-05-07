@@ -47,6 +47,7 @@ public class Tile {
 
 	public void update(){
 		//Make the block bounce when jumped from below
+		if(sprite == null) return;
 		if(yVel != 0 || sprite.yOffset != 0){
 			sprite.yOffset += yVel;
 			yVel += 0.2f;
@@ -74,11 +75,15 @@ public class Tile {
 	}
 	
 	public int getWidth(){
-		return sprite.width;
+		if(sprite != null)
+			return sprite.width;
+		return 0;
 	}
 	
 	public int getHeight(){
-		return sprite.height;
+		if(sprite != null)
+			return sprite.height;
+		return 0;
 	}
 
 	public void setSprite(Sprite sprite) {

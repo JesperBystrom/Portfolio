@@ -1,6 +1,7 @@
 package entities;
 
 import java.awt.event.KeyEvent;
+import java.util.List;
 
 import animation.Animation;
 import main.BoxCollider;
@@ -17,21 +18,18 @@ enum GrowState {
 	SMALL, BIG
 }
 
-enum PlayerState {
-	IDLING, MOVING, JUMPING, TURNING, GROWING
-}
-
-public class Player extends Mob {
+public class Player extends Entity {
 
 	//private float growTimer = -1;
 	private float holdTime = 0;
 	private float baseAcceleration = 0.0882f;
 	private float acceleration = baseAcceleration;
 	private GrowState growState = GrowState.SMALL;
-	private PlayerState state = PlayerState.IDLING;
+	
 	private Animation bigMarioAnimation;
 	private Animation smallMarioAnimation;
 	private Sprite[] growPattern = {
+			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_BIG_IDLE),
 			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE),
 			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE),
 			SpriteFactory.getInstance().getSprite(SpriteType.MARIO_MIDDLE),
@@ -65,13 +63,15 @@ public class Player extends Mob {
 		game.addAnimation(animation);
 		game.addAnimation(smallMarioAnimation);
 		game.addAnimation(bigMarioAnimation);
+		growTimer.setSpeed(7);
 		game.addTimer(growTimer);
 		
 		sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
 	}
-
+	
 	@Override
 	public void update() {
+		
 		switch(growState){
 		case BIG:
 			animation = bigMarioAnimation;
@@ -87,7 +87,7 @@ public class Player extends Mob {
 			collider.width = 12;
 			collider.height = 12;
 			collider.xo = 2;
-			collider.yo = 4;
+			collider.yo = 3;
 
 			animation = smallMarioAnimation;
 			idleSprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_IDLE);
@@ -104,6 +104,23 @@ public class Player extends Mob {
 			
 			if(velocity.x < 0.375f && velocity.x > -0.375f)
 				velocity.x = 0;
+		}
+		
+		super.update();
+		
+		if(game.getLevel().getWin()){
+			velocity.x = 0;
+			velocity.y = -Game.GRAVITY;
+			setEntityState(EntityState.WIN);
+			if(game.getLevel().getFlagPole().getFlag().position.y < game.getLevel().getHeight()-64){
+				if(position.y <= game.getLevel().getFlagPole().getFlag().position.y)
+					position.y++;
+			} else {
+				velocity.x = 1;
+				velocity.y = Game.GRAVITY*5;
+				collider.xo = sprite.xOffset+8;
+			}
+			return;
 		}
 		
 		//Idle
@@ -135,14 +152,13 @@ public class Player extends Mob {
 			holdTime = 0;
 		
 		//Grow
-		if(growTimer.getStarted()){
-			if(growTimer.getFinished()){
+		if(growTimer.getFinished()){
+			if(getGrowState() == GrowState.SMALL)
 				setGrowState(GrowState.BIG);
-				if(growTimer.getFinished()){
-					growTimer.stop();
-				}
-				setPlayerState(PlayerState.IDLING);
-			}
+			else
+				setGrowState(GrowState.SMALL);
+			growTimer.stop();
+			setEntityState(EntityState.IDLING);
 		}
 		
 		//Jump
@@ -155,34 +171,18 @@ public class Player extends Mob {
 		}
 		
 		animation.setSpeed(Math.abs(velocity.x));
-		
-		super.update();
+		 
+		//super.update();
 	}
 	
 	public GrowState getGrowState() {
 		return growState;
 	}
-
+	
 	@Override
-	public void render(RenderHandler renderHandler) {
-		switch(state){
-		case IDLING:
-			sprite = idleSprite;
-			break;
-		case MOVING:
-			sprite = animation.getCurrentFrame();
-			break;
-		case JUMPING:
-			sprite = jumpSprite;
-			break;
-		case TURNING:
-			sprite = turnSprite;
-			break;
-		case GROWING:
-			sprite = growPattern[(int)growTimer.getTime()];
-			break;
-		}
-		super.render(renderHandler);
+	public void onHorizontalCollision(BoxCollider collider) {
+		if(!game.getLevel().getWin())
+			super.onHorizontalCollision(collider);
 	}
 	
 	@Override
@@ -193,26 +193,32 @@ public class Player extends Mob {
 		} else {
 			//if bounce on it, for question block etc
 			Tile t = game.getLevel().getTile((int)collider.position.x>>4, (int)collider.position.y>>4);
+			List<Entity> entities = game.getLevel().getEntityCollisions(new BoxCollider(new Vector2f((int)collider.position.x, (int)collider.position.y-16), 16, 16));
 			if(t != null)
-				if(t.canBump())
+				if(t.canBump() && this.collider.getSolid()){
 					t.bump(this);
+					entities.forEach(e -> {
+						e.push(Direction.UP, 3);
+					});
+				}
 		}
+		holdTime = 24;
 	}
 
 	public void grow() {
-		setPlayerState(PlayerState.GROWING);
+		setEntityState(EntityState.GROWING);
 		growTimer.start();
 		Game.pause(60);
 	}
 	
+	@Override
 	public void idle(){
-		if(getPlayerState() != PlayerState.GROWING || growTimer.getFinished())
-			setPlayerState(PlayerState.IDLING);
+		super.idle();
 	}
 	
 	public void turn() {
-		if(getPlayerState() == PlayerState.MOVING)
-		setPlayerState(PlayerState.TURNING);
+		if(getEntityState() == EntityState.MOVING && getEntityState() != EntityState.DYING)
+		setEntityState(EntityState.TURNING);
 		sprite.xOffset *= -dir;
 		
 		sprite = turnSprite;
@@ -223,7 +229,8 @@ public class Player extends Mob {
 	}
 	
 	public void jump() {
-		setPlayerState(PlayerState.JUMPING);
+		if(getEntityState() != EntityState.DYING)
+			setEntityState(EntityState.JUMPING);
 		acceleration = baseAcceleration / 2;
 		velocity.y = -jumpspeed;
 		onGround = false;
@@ -231,8 +238,7 @@ public class Player extends Mob {
 	
 	@Override
 	public void move(byte direction) {
-		if(getPlayerState() == PlayerState.IDLING)
-			setPlayerState(PlayerState.MOVING);
+		super.move(direction);
 		
 		if(velocity.x < maxSpeed && velocity.x > -maxSpeed){
 			velocity.x += acceleration * direction;
@@ -257,6 +263,21 @@ public class Player extends Mob {
 		}
 	}
 	
+	@Override
+	public void hurt() {
+		if(getGrowState() == GrowState.BIG){
+			shrink();
+		} else {
+			kill();
+		}
+		super.hurt();
+	}
+	
+	public void shrink(){
+		growTimer.start();
+		setEntityState(EntityState.GROWING);
+	}
+	
 	public boolean isSmall() {
 		return growState == GrowState.SMALL;
 	}
@@ -268,12 +289,56 @@ public class Player extends Mob {
 	public void setGrowState(GrowState state){
 		this.growState = state;
 	}
-	
-	public void setPlayerState(PlayerState state){
-		this.state = state;
+
+	@Override
+	protected void onTurning() {
+		sprite = turnSprite;
+	}
+
+	@Override
+	protected void onJumping() {
+		sprite = jumpSprite;
+	}
+
+	@Override
+	protected void onMoving() {
+		sprite = animation.getCurrentFrame();
+	}
+
+	@Override
+	protected void onIdling() {
+		sprite = idleSprite;
 	}
 	
-	public PlayerState getPlayerState(){
-		return state;
+	@Override
+	protected void onGrowing() {
+		if(growTimer.getTime() >= 0)
+			sprite = growPattern[(int)growTimer.getTime()];
+	}
+	
+	@Override
+	protected void onDying() {
+		sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_DIE);
+	}
+	
+	@Override
+	protected void onWin() {
+		if(velocity.x == 0){
+			sprite = SpriteFactory.getInstance().getSprite(SpriteType.MARIO_WIN);
+			if(position.y > game.getLevel().getHeight()-64){
+				flip = Sprite.FLIP_X;
+			}
+		} else {
+			flip = Sprite.FLIP_NONE;
+			sprite = animation.getCurrentFrame();
+			animation.setSpeed(1);
+		}
+	}
+	
+	@Override
+	public void kill() {
+		setEntityState(EntityState.DYING);
+		velocity.y = -8;
+		collider.setSolid(false);
 	}
 }

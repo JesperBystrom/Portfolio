@@ -13,38 +13,40 @@ public class Mushroom extends Entity {
 	public Mushroom(Game game, float target) {
 		super(game);
 		sprite = SpriteFactory.getInstance().getSprite(SpriteType.MUSHROOM);
-		velocity.x = 1;
+		velocity.x = 0;
 	}
 	
 	@Override
 	public void update() {
-		if(timer > 30){
+		if(getVisible()){
 			super.update();
-			velocity.x = 1;
 		}
+		if(timer > 100)
+			if(velocity.x == 0) velocity.x = 1;
 		timer++;
 	}
 	
 	@Override
 	public void render(RenderHandler renderHandler) {
-		if(timer > 30)
+		if(getVisible())
 			super.render(renderHandler);
 	}
 	
 	@Override
-	public void onVerticalCollison(BoxCollider collider) {
-		position.y -= 0.25f;
-		super.onVerticalCollison(collider);
-	}
-	
-	@Override
 	public void onHorizontalCollision(BoxCollider collider) {
-		// TODO Auto-generated method stub
-		super.onHorizontalCollision(collider);
+		//super.onHorizontalCollision(collider);
+		if(timer > 100)
+			velocity.x *= -1;
 	}
 	
 	@Override
-	public void onCollision(Entity e) {
+	public void onVerticalCollison(BoxCollider collider) {
+		super.onVerticalCollison(collider);
+		position.y -= 0.25f;
+	}
+	
+	@Override
+	public boolean onCollision(Entity e) {
 		if(e instanceof Player){
 			//make player grow
 			Player p = (Player)e;
@@ -53,11 +55,10 @@ public class Mushroom extends Entity {
 			}
 			game.getLevel().removeEntity(this);
 		}
+		return true;
 	}
 	
-	@Override
-	public boolean getSolid() {
-		return false;
+	private boolean getVisible(){
+		return timer > 30;
 	}
-
 }

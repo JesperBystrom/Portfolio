@@ -1,7 +1,7 @@
 package etc;
 
 import java.awt.image.BufferedImage;
-import java.awt.image.DataBufferInt;
+import java.util.Random;
 
 public class Tools {
 	public static int[] imageToPixels(BufferedImage image){
@@ -19,5 +19,11 @@ public class Tools {
 	
 	public static float lerp(float val, float target, float t){
 		return (1-t) * val + t * target;
+	}
+	
+	public static Object choose(Object... objects){
+		Random random = new Random();
+		int r = random.nextInt(objects.length);
+		return objects[r];
 	}
 }

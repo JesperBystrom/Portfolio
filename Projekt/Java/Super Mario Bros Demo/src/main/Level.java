@@ -8,7 +8,10 @@ import java.util.List;
 
 import javax.imageio.ImageIO;
 
+import entities.Castle;
 import entities.Entity;
+import entities.Flag;
+import entities.FlagPole;
 import entities.Goomba;
 import etc.Tools;
 import main.SpriteFactory.SpriteType;
@@ -27,6 +30,8 @@ public class Level {
 	private List<ParticleSystem> particles = new ArrayList<ParticleSystem>();
 	private BufferedImage world;
 	private int[] pixels;
+	private FlagPole flagPole;
+	private boolean won = false;
 	
 	public Level(Game game, int tileWidth, int tileHeight){
 		this.game = game;
@@ -57,6 +62,9 @@ public class Level {
 					setTile(x, y, new TileSolid(SpriteFactory.getInstance().getSprite(SpriteType.TILE_GROUND_DEFAULT)));
 					break;
 				case 0xFFFFA542:
+					setTile(x, y, new TileUseable(SpriteFactory.getInstance().getSprite(SpriteType.TILE_QUESTIONMARK_DEFAULT), Tile.Reward.COIN));
+					break;
+				case 0xFFFFD800:
 					setTile(x, y, new TileUseable(SpriteFactory.getInstance().getSprite(SpriteType.TILE_QUESTIONMARK_DEFAULT), Tile.Reward.MUSHROOM));
 					break;
 				case 0xFF7F7F7F:
@@ -73,8 +81,28 @@ public class Level {
 					break;
 				case 0xFF732D08:
 					Goomba g = new Goomba(game);
-					g.setPosition(new Vector2f(x*16,y*16));
+					g.setPosition(new Vector2f(x<<4,y<<4));
 					addEntity(g);
+					break;
+				case 0xFFA4BC00:
+					if(flagPole == null){
+						flagPole = new FlagPole(game);
+						flagPole.setPosition(new Vector2f(x<<4, y<<4));
+						Flag flag = new Flag(game);
+						flag.setPosition(new Vector2f(flagPole.position.x-8, flagPole.position.y+8));
+						addEntity(flagPole);
+						addEntity(flag);
+						flagPole.setFlag(flag);
+					}
+					break;	
+				case 0xFFFF0000:
+					game.player.position.x = x<<4;
+					game.player.position.y = y<<4;
+					break;
+				case 0xFF7F0000:
+					Castle castle = new Castle(game);
+					castle.setPosition(new Vector2f(x<<4, y<<4));
+					addEntity(castle);
 					break;
 				}
 			}
@@ -100,7 +128,6 @@ public class Level {
 	}
 	
 	public void render(RenderHandler renderHandler){
-		
 		for(int i=0;i<entities.size();i++){
 			entities.get(i).render(renderHandler);
 		}
@@ -119,14 +146,15 @@ public class Level {
 	}
 	
 	public Vector2f getNearestTilePosition(int xt, int yt){
-		for(int xx=xt-2;xx<xt+2;xx++){
-			for(int yy=yt-2;yy<yt+2;yy++){
-				if(!getInBounds(xt, 0, tileWidth, yt, 0, tileHeight)) continue;
-				if(getTile(xx,yy) instanceof TileUseable){
-					return new Vector2f(xx<<4,yy<<4);
-				}
-			}
-		}
+		if(getTile(xt,yt) instanceof TileUseable) return new Vector2f(xt<<4,yt<<4);
+		if(getTile(xt,yt+1) instanceof TileUseable) return new Vector2f(xt<<4,(yt+1)<<4);
+		if(getTile(xt,yt-1) instanceof TileUseable) return new Vector2f(xt<<4,(yt-1)<<4);
+		if(getTile(xt+1,yt) instanceof TileUseable) return new Vector2f((xt+1)<<4,yt<<4);
+		if(getTile(xt-1,yt) instanceof TileUseable) return new Vector2f((xt-1)<<4,yt<<4);
+		if(getTile(xt+1,yt+1) instanceof TileUseable) return new Vector2f((xt+1)<<4,(yt+1)<<4);
+		if(getTile(xt-1,yt-1) instanceof TileUseable) return new Vector2f((xt-1)<<4,(yt-1)<<4);
+		if(getTile(xt+1,yt-1) instanceof TileUseable) return new Vector2f((xt+1)<<4,(yt-1)<<4);
+		if(getTile(xt-1,yt+1) instanceof TileUseable) return new Vector2f((xt-1)<<4,(yt+1)<<4);
 		return null;
 	}
 	
@@ -199,5 +227,21 @@ public class Level {
 	
 	public void removeEntity(Entity e) {
 		entities.remove(e);
+	}
+	
+	public void win(){
+		won = true;
+	}
+
+	public boolean getWin() {
+		return won;
+	}
+	
+	public FlagPole getFlagPole(){
+		return flagPole;
+	}
+
+	public float getHeight() {
+		return tileHeight << 4;
 	}
 }

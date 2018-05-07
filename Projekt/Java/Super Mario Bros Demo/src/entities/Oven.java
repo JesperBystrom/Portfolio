@@ -35,6 +35,8 @@ public class Oven {
 		
 		if(temperature >= 400)
 			stateManager.transition(stateManager.getState("idling"));
+		if(stateManager.getCurrentState() == idling && temperature < 400)
+			stateManager.transition(stateManager.getState("heating"));
 		
 		System.out.println(stateManager.getCurrentState().getTag());
 		

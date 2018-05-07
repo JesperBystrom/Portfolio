@@ -9,6 +9,7 @@ public class BoxCollider {
 	public int height;
 	public float xo = 0;
 	public float yo = 0;
+	public boolean solid = true;
 	
 	public BoxCollider(Vector2f position, int width, int height){
 		this.position = position;
@@ -49,5 +50,13 @@ public class BoxCollider {
 	
 	public void render(RenderHandler renderHandler){
 		renderHandler.renderCollider(this, xo, yo);
+	}
+	
+	public void setSolid(boolean solid){
+		this.solid = solid;
+	}
+
+	public boolean getSolid() {
+		return solid;
 	}
 }

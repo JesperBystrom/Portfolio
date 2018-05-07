@@ -10,6 +10,7 @@ public class Timer {
 	private float startTime;
 	private TimerState state;
 	private Delegate delegate;
+	private int speed = 1;
 	
 	public Timer(float time){
 		this.time = time;
@@ -17,8 +18,10 @@ public class Timer {
 	}
 	
 	public void update(Game game){
-		if(!getStarted() || game.getTicks() % 10 != 0) return;
+		if(!getStarted() || game.getTicks() % (20 - (speed << 1)) != 0) return;
+		if(time <= 0) return;
 		time -= 1;
+		System.out.println(time);
 	}
 	
 	public void start(){
@@ -44,5 +47,9 @@ public class Timer {
 	
 	public float getTime(){
 		return time;
+	}
+
+	public void setSpeed(int speed) {
+		this.speed = speed;
 	}
 }

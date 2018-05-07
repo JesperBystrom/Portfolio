@@ -9,7 +9,7 @@ public class CColor {
 	public static final int WHITE = 0xFFFFFF;
 	public static final int SKY = 0x9096CA;
 	public static final int MARIO_RED_CAP = 0xFF3118;
-	public static final int MARIO_BROWN_SHIRT = 0xC66300;
+	public static final int LIGHT_BROWN = 0xC66300;
 	public static final int MARIO_FACE = 0xFF945A;
 	public static final int BROWN = 0x9C4A00;
 	public static final int DARK_BROWN = 0x522100;

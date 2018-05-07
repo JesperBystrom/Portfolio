@@ -25,7 +25,7 @@ public class TileUseable extends TileAnimation {
 		if(canBump()){
 			SpriteFactory s = SpriteFactory.getInstance();
 			Vector2f v = source.game.getLevel().getTileCoordinates((int)source.position.x>>4, ((int)source.position.y>>4)-1);
-			if((reward & Reward.COIN.id()) != 0){
+			if((reward & Reward.COIN.id()) != 0 && v != null){
 				source.game.getLevel().addParticle(new ParticleCoin(v, 22f, 1f, 
 																				s.getSprite(SpriteType.COIN_1),
 																				s.getSprite(SpriteType.COIN_2),

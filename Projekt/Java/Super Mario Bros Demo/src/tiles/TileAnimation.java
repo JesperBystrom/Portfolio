@@ -22,7 +22,7 @@ public class TileAnimation extends TileSolid {
 	@Override
 	public void render(RenderHandler renderHandler, Vector2f position) {
 		super.render(renderHandler, position);
-		if(!canBump()) return;
+		if(!canBump() || sprite == null) return;
 		timer += 0.5f;
 		if(timer >= 0){
 			sprite.color[0] = colors[0];

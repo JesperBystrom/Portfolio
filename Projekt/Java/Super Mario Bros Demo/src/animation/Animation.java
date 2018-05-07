@@ -11,6 +11,7 @@ public class Animation {
 	
 	public Animation(Sprite... clip){
 		this.clip = clip;
+		setSpeed(1);
 	}
 	public Animation(float speed, Sprite... clip){
 		this.speed = speed;

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import animation.Animation;
-import entities.Oven;
+import entities.FlagPole;
 import entities.Player;
 
 public class Game implements Runnable {
@@ -26,7 +26,7 @@ public class Game implements Runnable {
 	private ArrayList<Timer> timers = new ArrayList<Timer>();
 	public Player player = new Player(this);
 	//public Mob mob = new Mob(this);
-	private Level level = new Level(this, 228, 14);
+	private Level level = new Level(this, 250, 14);
 	private static Window window;
 	private KeyManager keyManager;
 	private long ticks;
@@ -49,16 +49,17 @@ public class Game implements Runnable {
 		level.addEntity(player);
 		scroll.x = Window.getXMiddle(player.position);
 		scroll.y = -128;
-		
-		Oven oven = new Oven();
-		
 	}
 	
 	public void update(){
+		for(int i=0;i<timers.size();i++){
+			timers.get(i).update(this);
+		}
 		if(Game.paused()){
 			pauseTimer--;
 			if(pauseTimer <= 0)
 				Game.resume();
+			return;
 		}
 		level.update();
 		
@@ -67,10 +68,6 @@ public class Game implements Runnable {
 			scroll.x += player.velocity.x;
 		}
 		animations.forEach(a -> a.update());
-		
-		for(int i=0;i<timers.size();i++){
-			timers.get(i).update(this);
-		}
 	}
 	
 	public void render(){
